@@ -4,45 +4,73 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Jade Nichols</title>
-  <style>
-    body {
-      margin: 0;
-      background: #fff;
-      color: #141e4c;
-      font-family: system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
-      line-height: 1.6;
-    }
-
-    main {
-      max-width: 60rem;
-      margin: 0 auto;
-      padding: 4rem 1.5rem;
-    }
-
-    h1 {
-      margin: 0 0 1.5rem;
-      font-size: clamp(2rem, 6vw, 3rem);
-      line-height: 1.1;
-    }
-
-    p {
-      max-width: 38rem;
-      margin: 0 0 3rem;
-      font-size: 1.125rem;
-    }
-
-    img {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
-  </style>
+  <meta name="description" content="Jade Nichols is a landscape architecture master's student combining community engagement, spatial data analysis, and design.">
+  <link rel="preload" href="assets/fonts/albert-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/site.css">
+  <link rel="stylesheet" href="assets/home.css">
+  <script src="assets/home.js" defer></script>
 </head>
-<body>
-  <main>
-    <h1>Jade Nichols</h1>
-    <p>Jade Nichols is a landscape architecture master's student at CCNY Spitzer with an urban planning degree from Cornell University and LEED GA certification. He combines community engagement, spatial data analysis, and design to create thriving urban spaces that combine beauty with utility. His work spans park redesigns in upstate New York, streetscapes in Cleveland, and neighborhood engagement in Rome. He is currently focused on public space as coastal resilience infrastructure in NYC.</p>
-    <img src="assets/cover-diagram.jpg" width="2400" height="300" alt="Diagram of three numbered steps joined by a winding dashed line: 1, investigate the environment; 2, collaborate with the community; 3, shape the future through design.">
+<body class="home">
+  <div class="hero">
+  <header class="intro">
+    <h1 class="name"><a href="./" id="home-link">Jade<br>Nichols</a></h1>
+    <p class="pronouns">(he/him)</p>
+
+    <nav aria-label="Main">
+      <ul class="menu">
+        <li><a class="menu-link" href="#about">About</a></li>
+        <li>
+          <button class="menu-link" id="projects-toggle" type="button" aria-expanded="false" aria-controls="projects-list">
+            <span class="marker" aria-hidden="true"></span>Projects
+          </button>
+          <div class="dropdown" id="projects-list">
+            <ul class="projects">
+              <li><a href="projects/greitzer-memorial-park/">Greitzer Memorial Park</a></li>
+              <li><a href="projects/before-the-stadium/">Before the Stadium</a></li>
+              <li><a href="projects/reconnecting-across-chester/">Reconnecting Across Chester</a></li>
+              <li><a href="projects/mcda-for-the-opc/">MCDA for the OPC</a></li>
+              <li><a href="projects/complete-ing-south-main/">Complete-ing South Main</a></li>
+              <li><a href="projects/event-emissions/">Event Emissions</a></li>
+              <li><a href="projects/synergy/">Synergy</a></li>
+              <li><a href="projects/third-rail/">Third Rail</a></li>
+              <li><a href="projects/spomen-dom/">Spomen Dom</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="menu-sketching"><a class="menu-link" id="sketching-link" href="sketching/">Sketching</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="sketch" role="img" aria-label="Ink sketch of a cemetery: cypress trees and gravestones on the left, a long arcade and stone tombs on the right.">
+    <div class="sketch-left"></div>
+    <div class="sketch-right"></div>
+    <div class="sk-base"></div>
+    <div class="sk-overlay"></div>
+  </div>
+
+  <div class="sk-ui">
+    <a class="sk-back" href="./">
+      <svg viewBox="0 0 29 10" aria-hidden="true"><path d="M8 5H29" fill="none"/><path d="M0 5 9 1.5V8.500Z" stroke="none"/></svg>Back
+    </a>
+    <a class="sk-title" href="#sketch-1">
+      <span class="sk-word">Sketching</span>
+      <svg class="sk-arrow" viewBox="0 0 10 28" aria-hidden="true"><path d="M5 0V20" fill="none"/><path d="M5 28 1.500 19H8.500Z" stroke="none"/></svg>
+    </a>
+  </div>
+  </div>
+
+  <main class="about" id="about">
+    <h2>About</h2>
+    <p class="bio">Jade Nichols is a landscape architecture master's student at CCNY Spitzer with an urban planning degree from Cornell University and a LEED GA certification. He combines community engagement, spatial data analysis, and design to create thriving urban spaces that synthesize beauty and utility. His work spans park redesigns in upstate New York, streetscapes in Cleveland, and neighborhood engagement in Rome. Now studying in the same neighborhood he grew up in, Jade is currently focused on public space as coastal resilience infrastructure in NYC.</p>
+
+    <div class="contact">
+      <h3>Contact</h3>
+      <a href="mailto:jade.nichols50@login.cuny.edu">jade.nichols50@login.cuny.edu</a>
+      <a href="https://www.linkedin.com/in/jadefnichols/" target="_blank" rel="noopener">linkedin.com/in/jadefnichols/</a>
+    </div>
+
+    <a class="cv" href="assets/cv.pdf" target="_blank" rel="noopener">Access CV</a>
   </main>
 </body>
 </html>

@@ -1,0 +1,432 @@
+/* Home page. Three layouts share this markup. In all of them the sketch stays
+   still and the project list drops into open space without touching it.
+
+   1. Phones and small tablets (this default): no tree. Text on the left, arch
+      section to its right. .hero is always tall enough for the open list.
+   2. Large tablets and narrow windows: tree and arch sections, cropped at the
+      bottom and pulled apart until the open list fits between them.
+   3. Wide windows (8:5 and wider): the no-scroll mockup composition.
+
+   Layouts 1 and 2 measure in "sketch units" of sketch-tall.jpg, where the image
+   is 1354 wide and starts at y = 620. --s is the size of one unit. Measured:
+     y 1075  top of the wall             x 494   right edge of the tree section
+     y 1750  crop line; the gap is clear x 580   where the sections are split
+             of ink all the way down     x 663   left edge of the arch section
+
+   Text block heights, in units of --fs:
+     12.5    name and menu with the list closed
+     29.6    name and menu with the list open
+     15.45   width of the longest project line, including its indents */
+
+html { scroll-behavior: smooth; }
+
+:root { --h: 100vh; }
+@supports (height: 100dvh) { :root { --h: 100dvh; } }
+
+body {
+  --fs: clamp(14.5px, 4vw, 19px);
+  --hang: calc(var(--fs) * .95);
+  --text-right: calc(24px + 15.45 * var(--fs) + 12px);
+  --hero: calc(56px + 29.6 * var(--fs));
+  --s: min(calc(var(--hero) / 710), calc((100vw - var(--text-right)) / 240));
+}
+
+.hero { position: relative; height: var(--hero); overflow: hidden; }
+
+.intro {
+  position: relative;
+  z-index: 1;
+  padding: 28px 0 0 24px;
+}
+
+.name { font-size: calc(var(--fs) * 1.9); line-height: 1.18; font-weight: 700; }
+
+.pronouns {
+  margin-top: calc(var(--fs) * .32);
+  font-size: calc(var(--fs) * .74);
+  line-height: 1.3;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.menu { margin-top: calc(var(--fs) * 1.37); font-size: var(--fs); line-height: 1.35; }
+.menu > li { padding-left: var(--hang); }
+.menu > li + li { margin-top: calc(var(--fs) * .63); }
+
+.menu-link {
+  display: inline-block;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.marker {
+  display: inline-block;
+  width: var(--hang);
+  margin-left: calc(var(--hang) * -1);
+  font-size: .8em;
+  font-weight: 300;
+  vertical-align: .04em;
+}
+.marker::before { content: "+"; }
+[aria-expanded="true"] .marker::before { content: "v"; }
+
+/* The dropdown animates by growing a grid row from 0 to its natural height. */
+.dropdown {
+  display: grid;
+  grid-template-rows: 0fr;
+  visibility: hidden;
+  transition: grid-template-rows var(--fade) var(--ease), visibility var(--fade);
+}
+.projects-open .dropdown { grid-template-rows: 1fr; visibility: visible; }
+.projects { min-height: 0; overflow: hidden; padding-left: var(--hang); }
+.projects li { padding-top: calc(var(--fs) * .55); }
+.no-anim * { transition: none !important; }
+
+/* Thin light grey underline, per the brief. Solid ink for the about links. */
+.menu-link:hover,
+.name a:hover,
+.projects a:hover {
+  text-decoration-line: underline;
+  text-decoration-color: var(--rule);
+}
+.contact a:hover { text-decoration-line: underline; }
+.cv { text-decoration-line: underline; }
+
+.sketch { position: absolute; inset: 0; }
+.sketch-left { display: none; }
+.sketch-right {
+  position: absolute;
+  left: var(--text-right);
+  right: 0;
+  top: calc(var(--hero) - 710 * var(--s));
+  height: calc(710 * var(--s)); /* y 1040 to the crop line at y 1750 */
+  background:
+    url("sketch-tall.jpg")
+    calc(-660 * var(--s)) calc(-420 * var(--s)) /
+    calc(1354 * var(--s)) calc(1330 * var(--s))
+    no-repeat;
+}
+
+.about { min-height: 100vh; padding: 44px 24px 56px; font-size: 18px; line-height: 1.45; }
+.about h2 { font-size: 34px; line-height: 1.1; font-weight: 700; }
+.bio { margin-top: 24px; max-width: 38em; }
+.contact { margin-top: 32px; }
+.contact h3 { font-size: inherit; font-weight: 600; }
+.contact a { display: table; }
+.cv { display: inline-block; margin-top: 32px; }
+
+/* ------------------------------------------------------------------------
+   Large tablets and narrow windows: both sections, full window width.
+   --need is how far short the natural gap is of fitting the list. The tree
+   section gives up to half of it (never more than 120 units), and the arch
+   section slides right for the rest, off the window edge.
+   ------------------------------------------------------------------------ */
+@media (min-width: 760px) {
+  body {
+    --fs: 19px;
+    --m: 14px;
+    --s: calc(100vw / 1354);
+    --text-w: calc(15.45 * var(--fs));
+    --need: max(0px, calc(494 * var(--s) + 2 * var(--m) + var(--text-w) - 663 * var(--s)));
+    --tree-x: min(calc(120 * var(--s)), calc(var(--need) / 2));
+    --arch-x: calc(var(--need) - var(--tree-x));
+    /* Closed menu ends just above the wall, which is 415 units below the top
+       of the crop (the crop starts at y 660, just above the tree). */
+    --top: max(16px, calc(415 * var(--s) - var(--m) - 12.5 * var(--fs)));
+    --hero: max(min(calc(1090 * var(--s)), var(--h)), calc(var(--top) + 29.6 * var(--fs) + 16px));
+  }
+
+  .intro {
+    padding: var(--top) 0 0 calc(494 * var(--s) - var(--tree-x) + var(--m));
+  }
+
+  .sketch-left, .sketch-right {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: auto;
+    right: auto;
+    height: calc(1090 * var(--s));
+    background-image: url("sketch-tall.jpg");
+    background-size: calc(1354 * var(--s)) calc(1330 * var(--s));
+    background-repeat: no-repeat;
+    transition: transform var(--move) var(--ease);
+  }
+  .sketch-left {
+    left: 0;
+    width: calc(580 * var(--s));
+    background-position: 0 calc(-40 * var(--s));
+    transform: translateX(calc(var(--tree-x) * -1));
+  }
+  .sketch-right {
+    left: calc(580 * var(--s));
+    width: calc(774 * var(--s));
+    background-position: calc(-580 * var(--s)) calc(-40 * var(--s));
+    transform: translateX(var(--arch-x));
+  }
+}
+
+/* ------------------------------------------------------------------------
+   Wide windows: no scroll, sketch fills the window, mockup composition.
+
+   Every measure below is in mockup pixels (the mockups are 2000 x 1125):
+   --u  scales the sketch so it always covers the window.
+   --t  scales the type: same as --u, but shrinks in short, wide windows so
+        the About text and open project list still fit on screen.
+   --ox shifts the sketch left when the sides are cropped, keeping the gap
+        where the menu sits.
+   ------------------------------------------------------------------------ */
+@media (min-aspect-ratio: 8/5) and (min-width: 900px) and (min-height: 560px) {
+  html, body { height: 100%; overflow: hidden; }
+
+  .hero { height: auto; overflow: visible; }
+
+  body {
+    --u: max(calc(100vw / 2000), calc(var(--h) / 1125));
+    --t: min(var(--u), calc(var(--h) / 1040));
+    --ox: calc((100vw - 2000 * var(--u)) * .45);
+    --oy: calc((var(--h) - 1125 * var(--u)) * .5);
+    --split: calc(var(--ox) + 840 * var(--u));
+  }
+
+  .sketch { position: fixed; inset: 0; overflow: hidden; }
+
+  .sketch-left, .sketch-right {
+    display: block;
+    position: absolute;
+    /* Each layer is as tall as the whole sketch, so it can rise on the
+       Sketching page without leaving a gap at the bottom. */
+    inset: var(--oy) 0 auto 0;
+    width: auto;
+    height: calc(1125 * var(--u));
+    transform: none;
+    background: url("sketch-wide.jpg") var(--ox) 0 / calc(2000 * var(--u)) calc(1125 * var(--u)) no-repeat;
+  }
+  .sketch-left { clip-path: inset(0 calc(100vw - var(--split)) 0 0); }
+  .sketch-right {
+    clip-path: inset(0 0 0 var(--split));
+    transition: opacity var(--fade) var(--ease);
+  }
+  .about-open .sketch-right { opacity: 0; }
+
+  .intro {
+    position: fixed;
+    z-index: 1;
+    top: calc(var(--h) * .128);
+    left: calc(var(--ox) + 642 * var(--u));
+    padding: 0;
+  }
+
+  .name { font-size: calc(52 * var(--t)); line-height: calc(60 * var(--t)); }
+  .pronouns { margin-top: calc(10 * var(--t)); font-size: calc(19 * var(--t)); line-height: calc(24 * var(--t)); }
+
+  .menu { margin-top: calc(50 * var(--t)); font-size: calc(25 * var(--t)); line-height: calc(36 * var(--t)); }
+  .menu > li { padding-left: calc(31 * var(--t)); }
+  .menu > li + li { margin-top: calc(24 * var(--t)); }
+  .marker { width: calc(31 * var(--t)); margin-left: calc(-31 * var(--t)); }
+
+  .projects { padding-left: calc(38 * var(--t)); }
+  .projects li { padding-top: 0; line-height: calc(37.5 * var(--t)); }
+  .projects li:first-child { padding-top: calc(31 * var(--t)); }
+
+  .about {
+    position: fixed;
+    z-index: 1;
+    /* "About" shares a line with "Nichols": the name's second line starts one
+       line height below the top of the menu block. */
+    top: calc(var(--h) * .128 + 60 * var(--t));
+    left: calc(var(--ox) + 1175 * var(--u));
+    /* Keeps at least 120 mockup pixels clear of the window's right edge. */
+    width: min(calc(690 * var(--t)), calc(100vw - var(--ox) - 1295 * var(--u)));
+    min-height: 0;
+    max-height: calc(var(--h) * .872 - 60 * var(--t) - 24px);
+    overflow-y: auto;
+    padding: 0;
+    font-size: calc(25 * var(--t));
+    line-height: calc(36.4 * var(--t));
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--fade) var(--ease), visibility var(--fade);
+  }
+  .about-open .about { opacity: 1; visibility: visible; }
+
+  .about h2 { font-size: calc(52 * var(--t)); line-height: calc(60 * var(--t)); }
+  .bio { margin-top: calc(84 * var(--t)); max-width: none; }
+  .contact { margin-top: calc(74 * var(--t)); }
+  .cv { margin-top: calc(75 * var(--t)); }
+}
+
+/* ------------------------------------------------------------------------
+   Sketching (/sketching/). The same sketch layers, plus a pencil drawing at 40%
+   laid over them. .sketching is on <html>: permanently on the Sketching page,
+   and added on the home page when the Sketching link plays the animation.
+
+   Overlay position. sketching-overlay.jpg shows y 1000 to 1800 of the pencil
+   scan, whose units are the same 1354 wide. Measured against Jade's mockup:
+     mockup pixels = 1.28 * scan + (310, -1036)
+     sketch units  = 0.85 * scan + (231, 271)
+   ------------------------------------------------------------------------ */
+:root { --move: 900ms; --quick: 300ms; }
+
+.sk-overlay {
+  position: absolute;
+  left: calc(var(--ov-x) + 231 * var(--ov-s));
+  top: calc(var(--ov-y) + 461 * var(--ov-s));
+  width: calc(1151 * var(--ov-s));
+  height: calc(680 * var(--ov-s));
+  background: url("sketching-overlay.jpg") 0 0 / 100% 100% no-repeat;
+  mix-blend-mode: multiply; /* the paper stays clear; only the pencil shows */
+  opacity: 0;
+  will-change: opacity, transform;
+  transition: opacity var(--move) var(--ease), transform var(--move) var(--ease);
+}
+.sketching .sk-overlay { opacity: .4; transform: translateY(var(--sk-dy)); }
+
+/* Phones have no tree on the home page, so the whole sketch fades in here. */
+.sk-base { display: none; }
+
+body {
+  /* Size of a sketch unit on the Sketching page, and where the unit origin
+     (x 0, y 660) lands. Default values are for the split layout. */
+  --ov-s: var(--s);
+  --ov-x: 0px;
+  --ov-y: 0px;
+  /* How far the sketch rises on the Sketching page, so the bottom of the
+     pencil drawing is not cut off. */
+  --sk-dy: 0px;
+  --sk-x: calc(24px + var(--hang));
+  --sk-fs: var(--fs);
+  --sk-line: calc(var(--fs) * 1.44);
+  --sk-back-y: 28px;
+  --sk-title-y: calc(28px + var(--fs) * 5.64);
+}
+
+.sketching .intro { opacity: 0; visibility: hidden; }
+.intro { transition: opacity var(--quick) var(--ease), visibility var(--quick); }
+.sketching .menu-sketching .menu-link,
+.sk-moving .menu-sketching .menu-link { visibility: hidden; }
+.sketching .about { display: none; }
+
+.sk-ui { position: absolute; inset: 0; z-index: 2; pointer-events: none; visibility: hidden; }
+.sketching .sk-ui { visibility: visible; }
+.sk-moving .sk-ui { visibility: visible; }
+
+.sk-back, .sk-title {
+  position: absolute;
+  left: var(--sk-x);
+  display: inline-flex;
+  align-items: center;
+  border-bottom: 1px solid transparent;
+  font-size: var(--sk-fs);
+  line-height: var(--sk-line);
+  white-space: nowrap;
+  pointer-events: auto;
+}
+.sk-back { top: var(--sk-back-y); }
+.sk-title { top: var(--sk-title-y); transition: transform var(--move) var(--ease); }
+.sk-back:hover, .sk-title:hover { border-bottom-color: currentColor; }
+
+.sk-back, .sk-arrow {
+  opacity: 0;
+  transition: opacity var(--fade) var(--ease) var(--quick);
+}
+.sketching .sk-back, .sketching .sk-arrow { opacity: 1; }
+.sk-moving:not(.sketching) .sk-back,
+.sk-moving:not(.sketching) .sk-arrow { transition-delay: 0ms; transition-duration: var(--quick); }
+
+.sk-back svg { width: 1.16em; height: .4em; margin-right: .84em; }
+.sk-arrow { width: .4em; height: 1.1em; margin-left: 1.3em; }
+.sk-back svg, .sk-arrow { display: block; overflow: visible; fill: currentColor; stroke: currentColor; }
+
+.sk-pages {
+  position: relative;
+  z-index: 1;
+  padding-top: clamp(96px, 16vh, 200px); /* clear space below the sketch */
+  background: #fff;
+}
+.sk-page {
+  display: grid;
+  gap: 32px;
+  padding: 40px 24px;
+}
+.sk-page + .sk-page { margin-top: clamp(64px, 10vh, 160px); }
+.sk-page img { display: block; width: 100%; height: auto; }
+
+/* Phones and small tablets. */
+@media (max-width: 759px) {
+  body {
+    --ps: max(calc(100vw / 1354), min(calc(var(--h) * .62 / 1090), calc(100vw / 760)));
+    --hs: max(var(--h), calc(1090 * var(--ps) + 44px + 7.08 * var(--fs)));
+    --ov-s: var(--ps);
+    /* Centre the pillar (x 598) as far as the sketch's edges allow. */
+    --ov-x: clamp(calc(100vw - 1354 * var(--ps)), calc(50vw - 598 * var(--ps)), 0px);
+    --ov-y: calc(var(--hs) - 1090 * var(--ps));
+  }
+  .sketching .hero { height: var(--hs); }
+  .sketch-right { transition: opacity var(--move) var(--ease); }
+  .sketching .sketch-right { opacity: 0; }
+  .sk-base {
+    display: block;
+    position: absolute;
+    left: var(--ov-x);
+    top: var(--ov-y);
+    width: calc(1354 * var(--ps));
+    height: calc(1090 * var(--ps));
+    background: url("sketch-tall.jpg") 0 calc(-40 * var(--ps)) / calc(1354 * var(--ps)) calc(1330 * var(--ps)) no-repeat;
+    opacity: 0;
+    transition: opacity var(--move) var(--ease);
+  }
+  .sketching .sk-base { opacity: 1; }
+}
+
+/* Split layout: the sections slide back together so the overlay lines up. */
+@media (min-width: 760px) {
+  body {
+    --sk-x: calc(494 * var(--s) - var(--tree-x) + var(--m) + var(--hang));
+    --sk-back-y: var(--top);
+    --sk-title-y: calc(var(--top) + var(--fs) * 5.64);
+    /* When the window is shorter than the sketch, rise until the crop line
+       at the bottom shows, cropping the treetops instead. */
+    --sk-dy: calc(-1 * max(0px, calc(1090 * var(--s)) - var(--hero)));
+  }
+  .sketching .sketch-left, .sketching .sketch-right { transform: translateY(var(--sk-dy)); }
+  .sk-page {
+    grid-template-columns: repeat(3, 25vw);
+    gap: 3.75vw;
+    padding: 40px 0 40px 9.75vw;
+  }
+}
+
+/* Wide layout: the mockup. Back and Sketching sit at their mockup positions. */
+@media (min-aspect-ratio: 8/5) and (min-width: 900px) and (min-height: 560px) {
+  body {
+    --ov-s: calc(var(--u) * 1.506); /* mockup pixels per sketch unit */
+    --ov-x: calc(var(--ox) - 38 * var(--u));
+    --ov-y: calc(var(--oy) + (660 * 1.506 - 1443.7) * var(--u));
+    --sk-x: calc(var(--ox) + 642 * var(--u) + 31 * var(--t));
+    --sk-fs: calc(25 * var(--t));
+    --sk-line: calc(36 * var(--t));
+    --sk-back-y: calc(var(--h) * .128 + 15 * var(--t));
+    --sk-title-y: calc(var(--h) * .128 + 156 * var(--t));
+    /* In windows wider than 16:9 the sketch is cropped top and bottom; on the
+       Sketching page it rises to show the bottom of the pencil drawing. */
+    --sk-dy: var(--oy);
+  }
+  html.sketching, html.sketching body { height: auto; overflow: visible; }
+  .sketching .hero { height: var(--h); }
+  .sketching .sketch { position: absolute; }
+  .sketch-left, .sketch-right { transition: opacity var(--fade) var(--ease), transform var(--move) var(--ease); }
+  .sketching .sketch-left, .sketching .sketch-right { transform: translateY(var(--sk-dy)); }
+  .sketching .about { display: block; opacity: 0; visibility: hidden; }
+  .sk-page { min-height: var(--h); align-content: center; }
+  .sk-page + .sk-page { margin-top: 0; }
+}
+
+/* The sketches only belong to the Sketching view. Hiding them as soon as Back
+   is clicked keeps them from flashing over the home page while the reverse
+   animation plays. */
+html:not(.sketching) .sk-pages { display: none; }

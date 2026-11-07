@@ -9,17 +9,50 @@ Jade Nichols: landscape architecture master's student at CCNY Spitzer, urban pla
 For anyone curious about Jade's work, as a whole or one specific project: job applications, coffee chats, networking, professors, friends, and curious clients. Also a lasting record of Jade's best work. It should be more dynamic and engaging than a PDF portfolio, include more projects, and show skills beyond architecture and planning.
 
 ## Pages
-- **Home (`/`):** one page and one URL.
-  - Opens on an introductory graphic with two links: ABOUT and PROJECTS.
-  - ABOUT scrolls down to the section below the graphic: bio, contact info, and CV link.
-  - PROJECTS goes to the projects page.
-- **Projects (`/projects/`):** all projects, linking to a sub-page for each one.
+Visual reference: `_source/home_mockup_1.jpg`, `home_mockup_2.jpg`, `about_mockup.jpg`, `projectpage_mockup.jpg` (Jade's Illustrator mockups). Ignore `home_mockup_idea_2.jpg` for now. Keep the design clean and simple.
 
-Keep the design clean and simple.
+### Home (`/`)
+- A no-scroll page: the Cypress sketch fills the window, with the name, pronouns, and menu (About, Projects, Sketching) in the gap.
+- **About:** the right side of the sketch crossfades into the about section at `/#about`; the left sketch and the menu stay visible. Clicking the name replaces About with the sketch again.
+- **Projects:** a smooth dropdown opens with every project, whether the sketch or the about section is showing. `+` becomes `v` when open. Coming back from a project reopens the list. Order: Greitzer Memorial Park, Before the Stadium, Reconnecting Across Chester, MCDA for the OPC, Complete-ing South Main, Event Emissions, Synergy, Third Rail, Spomen Dom.
+- Hovering a project line underlines it with a thin light grey line. Clicking opens that project's own page at its own URL, in the same tab.
+- **About section:** bio, contact, CV link. Email underlines on hover and opens a draft to Jade (`mailto:`). LinkedIn underlines on hover and opens in a new tab. "Access CV" is always underlined and opens the CV in a new tab.
+- **Bio:** the site uses the longer mockup version, not `_source/Bio.txt`.
+- **Menu placement:** the sketch never moves when Projects opens, and text never overlaps the sketch. The menu sits above the open space and the list drops into it. This matters more than how the sketch is cropped.
+- **16:9 and wider:** looks exactly like the mockup.
+- **Large tablets and narrow windows:** the bottom of the sketch is cropped so the open space runs all the way through, and the sketch is split into tree and arch sections, pulled apart to fit the list.
+- **Phones and small tablets:** no tree. Text on the left, arch section only to its right.
+- **8:5 and wider is the no-scroll layout; narrower windows scroll:** About follows the sketch; the About link scrolls to it and the name returns to the top.
+- **About in the no-scroll layout:** the "About" heading shares a line with "Nichols", with generous space to the window edges.
+- **Short windows:** type and menu scale with the sketch so the composition holds.
+- **Font:** Albert Sans, self-hosted in `assets/fonts/` (free, open license). Jade rejected Hanken Grotesk because of its J; check the J in any font change.
+
+### Sketching (`/sketching/`)
+Visual reference: `_source/sketching_land_mockup.jpg`, `_source/sketch_pg1_mockup.jpg`.
+- **From the home page:** clicking Sketching plays an animation and changes the URL without reloading. The menu quickly fades, the word moves up to its new position, the pencil sketch fades in at 40% over the base sketch, and Back and the down arrow appear. Opening `/sketching/` directly shows the end state.
+- **Alignment and smoothness matter most.** The pencil sketch must line up with the base sketch at every window size; being cut off on the left is fine. Its position is measured against the mockup and documented in `assets/home.css`.
+- **Narrow windows:** the tree and arch sections slide back together so the sketches line up. On phones the whole base sketch fades in.
+- **Show as much of the pencil drawing as possible:** when the window is shorter than the sketch, the sketch rises on the Sketching page so its bottom shows, cropping the top instead.
+- **Ample white space** between the bottom of the sketch and the first page of sketches.
+- **Sketching with the down arrow:** glides down to the first page of sketches, a little slower than the browser's own smooth scroll. Normal scrolling also works.
+- **Back:** returns to home with the project list closed, reversing the animation when possible.
+- **Pages of sketches:** each is three panels cut from a mockup (`sketch_pg1_mockup.jpg`, `sketch_pg2_mockup.jpg`), in a row, stacked on phones. New pages follow the same pattern.
+
+### Project pages (`/projects/<project-name>/`)
+- **Back (top left):** goes to home and stays in the same position while scrolling. On hover, the arrow and the word are both underlined.
+- **Cover section:** cover image (16:9), project title, type, location, date. Size the cover to the window height so the title and More stay visible without scrolling.
+- **Deliverable link, opens in a new tab, where a project has one:**
+  - Full report or paper: Johnson City, Pietralata, MCDA
+  - ArchFab link: Spomen Dom
+  - Full presentation deck: Synergy, Chester
+- **More (right side):** scrolls down until no part of the cover image shows at any screen size, with the title first on screen. Normal scrolling also works. Unlike Back, More does not follow the scroll.
+- **Project content:** loosely based on the project's pages in `_source/Jade Nichols Urban Planning and Design Portfolio.pdf`, with its text copied verbatim (including captions and collaborator credits). Images, maps, and diagrams come from the project's `_source` folder, chosen and organized in the site's style. Greitzer is the reference example.
+- **Template:** `projects/greitzer-memorial-park/` (built from `projectpage_mockup.jpg`), styled by `assets/project.css` and `assets/project.js`. Each project's images and PDFs go in `assets/<short-name>/`. The cover comes from the `landing image` in the project's `_source` folder.
+- **Greitzer report:** both "Access Full Report" links are commented out in its page until a smaller PDF is ready.
+- **PDF size:** GitHub warns about files over 50 MB and refuses ones over 100 MB, and big PDFs are slow to open on phones. Check sizes before committing.
 
 ## Folder structure
 - `index.html`: home page
-- `projects/index.html`: projects page
 - `projects/<project-name>/`: one folder per project sub-page
 - `assets/`: web-ready images, CSS, JavaScript, and the public CV
 - `_source/<project-name>/`: originals, one subfolder per project
@@ -31,5 +64,4 @@ Keep the design clean and simple.
 - Everything committed is public. Check with Jade before publishing anything from `_source/`.
 
 ## Undecided: ask, don't assume
-- **Intro graphic:** should be visually engaging, such as movement or a cursor that reveals a collage of images.
-- **Project organization:** options are categories (design, community engagement, data analysis, other), a timeline, or one list sorted by relevance and quality. Many projects span several categories.
+- **Sketching section:** what comes after the first page.

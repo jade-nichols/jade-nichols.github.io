@@ -1,0 +1,242 @@
+/* Project pages. Desktop measures are in mockup pixels (projectpage_mockup.jpg
+   is 2000 x 1125): --u is one of them, sized so the whole cover section (image,
+   title, details, report link, More) fits in the window without scrolling.
+   The composition is centred in windows wider than 16:9. */
+
+:root { --h: 100vh; }
+@supports (height: 100dvh) { :root { --h: 100dvh; } }
+
+body {
+  --u: min(calc(100vw / 2000), calc(var(--h) / 1125));
+  --left: calc(287 * var(--u) + (100vw - 2000 * var(--u)) / 2);
+  --col: calc(1232 * var(--u));
+}
+
+/* Back stays put while the page scrolls. */
+.back {
+  position: fixed;
+  z-index: 2;
+  top: calc(80 * var(--u));
+  left: calc(62 * var(--u) + (100vw - 2000 * var(--u)) / 2);
+  display: inline-flex;
+  align-items: center;
+  border-bottom: 1px solid transparent;
+  font-size: max(calc(25 * var(--u)), 16px);
+  line-height: 1.44;
+}
+.back:hover, .more:hover { border-bottom-color: currentColor; }
+.back svg { width: 1.16em; height: .4em; margin-right: .84em; }
+.back svg, .more svg { display: block; overflow: visible; fill: currentColor; stroke: currentColor; }
+
+.project { padding: calc(81 * var(--u)) 0 0 var(--left); }
+
+.cover { width: var(--col); }
+.cover-image { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+
+.cover-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+}
+
+.project-title {
+  margin-top: calc(34 * var(--u));
+  font-size: max(calc(52 * var(--u)), 26px);
+  line-height: 1.15;
+  font-weight: 700;
+  scroll-margin-top: max(calc(80 * var(--u)), 40px);
+}
+
+.project-meta {
+  margin-top: calc(18 * var(--u));
+  font-size: max(calc(19 * var(--u)), 14px);
+  line-height: 1.3;
+}
+.project-meta li + li { margin-top: calc(20 * var(--u)); }
+
+.deliverable {
+  display: inline-block;
+  margin-top: calc(44 * var(--u));
+  font-size: max(calc(19 * var(--u)), 14px);
+  text-decoration-line: underline;
+}
+
+.more {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(10 * var(--u));
+  border-bottom: 1px solid transparent;
+  font-size: max(calc(20 * var(--u)), 14px);
+  line-height: 1.2;
+}
+.more svg { width: .4em; height: 1.1em; }
+
+/* Room below the cover so More can bring the title to the top. */
+.project-body { min-height: var(--h); }
+
+/* Phones and portrait tablets: one column, Back in a bar across the top. */
+@media (max-width: 759px), (max-aspect-ratio: 1/1) {
+  body { --pad: 24px; }
+  .back {
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 14px var(--pad);
+    background: #fff;
+    border-bottom: 0;
+  }
+  .back:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .18em; }
+  .project { padding: 64px var(--pad) 0; }
+  .cover { width: 100%; }
+  .project-title { margin-top: 24px; font-size: clamp(26px, 7vw, 40px); scroll-margin-top: 64px; }
+  .project-meta { margin-top: 12px; font-size: 16px; }
+  .project-meta li + li { margin-top: 8px; }
+  .deliverable { margin-top: 24px; font-size: 16px; }
+  .more { gap: 6px; font-size: 15px; }
+}
+
+/* ------------------------------------------------------------------------
+   Project content below the cover. Same column as the cover image.
+   ------------------------------------------------------------------------ */
+.project-body {
+  min-height: 0;
+  width: var(--col);
+  padding: calc(120 * var(--u)) 0 calc(160 * var(--u));
+  --body-fs: max(calc(19 * var(--u)), 16px);
+  --gap: max(calc(36 * var(--u)), 20px);
+  font-size: var(--body-fs);
+  line-height: 1.6;
+}
+
+.pj-section + .pj-section { margin-top: max(calc(150 * var(--u)), 72px); }
+
+.pj-section h2 {
+  margin-bottom: max(calc(36 * var(--u)), 20px);
+  font-size: max(calc(30 * var(--u)), 22px);
+  line-height: 1.2;
+  font-weight: 700;
+}
+.pj-section h2:not(:first-child) { margin-top: max(calc(90 * var(--u)), 48px); }
+.pj-section h3 { margin-bottom: .6em; font-size: 1em; font-weight: 600; }
+
+.pj-text p + p { margin-top: 1em; }
+
+figure { margin: 0; }
+.project-body img { display: block; width: 100%; height: auto; }
+figcaption, .pj-credit {
+  margin-top: .7em;
+  font-size: max(calc(15 * var(--u)), 13px);
+  line-height: 1.4;
+  color: #6f6f6f;
+}
+
+/* Intro: the story beside the 1963 newspaper clipping. */
+.pj-intro { display: grid; grid-template-columns: 1fr minmax(0, 300px); gap: calc(2.5 * var(--gap)); align-items: start; }
+.pj-intro .pj-text { max-width: 44em; }
+
+/* Text beside an image. */
+.pj-split { display: grid; grid-template-columns: 36% 1fr; gap: var(--gap); align-items: start; }
+.pj-contribution { max-width: 44em; }
+.pj-split-reverse { grid-template-columns: 1fr 42%; margin-top: calc(var(--gap) / 2); }
+
+.pj-grid-2, .pj-grid-3, .pj-grid-photos { display: grid; gap: var(--gap); }
+.pj-grid-2 { grid-template-columns: 1fr 1fr; }
+.pj-grid-3 { grid-template-columns: repeat(3, 1fr); }
+/* Widths in proportion to each photo's shape, so both are the same height. */
+.pj-grid-photos { grid-template-columns: 1.782fr 1.471fr; align-items: start; }
+.pj-maps { margin-top: calc(1.5 * var(--gap)); }
+.pj-diagrams { margin-top: calc(2.5 * var(--gap)); }
+
+/* The planting diagrams: larger, centered, right after the site plan. */
+.pj-feature { display: grid; gap: calc(2 * var(--gap)); margin-top: calc(2.5 * var(--gap)); }
+.pj-feature figure { width: 84%; margin: 0 auto; }
+.pj-feature h3 { text-align: center; }
+.pj-wide { margin-bottom: var(--gap); }
+
+/* Map legends, matched to the colors in the maps. */
+.pj-legend { margin-top: .8em; font-size: max(calc(15 * var(--u)), 13px); line-height: 1.5; }
+.pj-legend li { display: flex; align-items: center; gap: .6em; }
+.sw { flex: none; width: 1.6em; height: .9em; background: var(--c); }
+.sw-outline { background: none; border: 2px solid #4f7f3a; }
+.sw-dot { background: radial-gradient(circle, #f0d060 0 35%, transparent 40%); }
+.sw-hatch { background: repeating-linear-gradient(135deg, #8a8a8a 0 1px, transparent 1px 4px); }
+
+/* Bar chart: one series, read off a recessive grid; hover or focus a bar
+   for its count. */
+.pj-chart { margin-top: calc(2 * var(--gap)); }
+.pj-chart h3 { margin-bottom: 1em; }
+.chart { position: relative; padding: 0 0 0 2.4em; }
+.chart-axis-title { display: block; margin: 0 0 .8em -2.4em; font-size: .75em; color: #8a8a8a; }
+.chart-plot {
+  --max: 16;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 2%;
+  align-items: end;
+  height: max(calc(300 * var(--u)), 200px);
+  margin-bottom: 3.2em;
+  border-bottom: 1px solid #9a9a9a;
+}
+.tick {
+  position: absolute; left: 0; right: 0;
+  bottom: calc(var(--v) / var(--max) * 100%);
+  border-top: 1px solid #e6e6e6;
+  font-size: .75em; color: #8a8a8a; line-height: 0;
+}
+.tick { text-indent: -2.2em; }
+.bar {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  outline-offset: 2px;
+}
+.bar-fill {
+  width: 100%;
+  height: calc(var(--v) / var(--max) * 100%);
+  background: #2a2a2a;
+  border-radius: 4px 4px 0 0;
+}
+.bar-value {
+  position: absolute; bottom: calc(var(--v) / var(--max) * 100% + 4px); left: 50%;
+  transform: translateX(-50%);
+  padding: 1px 6px;
+  border-radius: 3px;
+  background: #fff;
+  font-size: .85em; font-weight: 600;
+  opacity: 0;
+  transition: opacity 150ms;
+}
+.bar:hover .bar-value, .bar:focus-visible .bar-value { opacity: 1; }
+.bar-label {
+  position: absolute; top: calc(100% + 6px); left: 50%;
+  width: 7em; transform: translateX(-50%);
+  font-size: .75em; line-height: 1.2; text-align: center;
+}
+
+.pj-end { margin-top: max(calc(120 * var(--u)), 64px); }
+.pj-end .deliverable { margin: 0; }
+
+/* Phones and portrait tablets: everything in one column. */
+@media (max-width: 759px), (max-aspect-ratio: 1/1) {
+  .project-body { width: auto; padding: 56px 0 96px; }
+  .pj-intro, .pj-split, .pj-split-reverse, .pj-grid-2, .pj-grid-photos { grid-template-columns: 1fr; }
+  .pj-clipping { max-width: 300px; }
+  .pj-split-reverse figure { order: 2; }
+  .pj-feature figure { width: 100%; }
+  .pj-grid-3 { grid-template-columns: 1fr; gap: 48px; }
+  .pj-maps { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .pj-maps .pj-legend { font-size: 11px; }
+  /* The chart turns sideways so the labels have room; counts always show. */
+  .chart { padding: 0; }
+  .chart-axis-title { margin-left: 0; }
+  .chart-plot { display: grid; grid-template-columns: 1fr; gap: 10px; height: auto; margin: 0; border: 0; }
+  .tick { display: none; }
+  .bar { display: grid; grid-template-columns: 8.2em 1fr 1.8em; align-items: center; gap: 8px; height: auto; }
+  .bar-label { position: static; order: -1; width: auto; transform: none; font-size: .8em; text-align: left; }
+  .bar-fill { height: 14px; width: calc(var(--v) / var(--max) * 100%); border-radius: 0 4px 4px 0; }
+  .bar-value { position: static; transform: none; padding: 0; opacity: 1; font-size: .8em; }
+}
