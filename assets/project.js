@@ -40,3 +40,41 @@
     requestAnimationFrame(step);
   });
 })();
+
+// Magnifying lens: hovering an image marked data-zoom="<large image>" shows a
+// round lens that follows the cursor with that spot enlarged. The large image
+// only loads on first hover. Mouse and trackpad only; touch screens skip it.
+(function () {
+  if (!matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  var ZOOM = 2.5;
+  document.querySelectorAll('img[data-zoom]').forEach(function (img) {
+    var lens = null;
+    function show(event) {
+      if (!lens) {
+        lens = document.createElement('div');
+        lens.className = 'pj-lens';
+        lens.setAttribute('aria-hidden', 'true');
+        lens.style.backgroundImage = 'url("' + img.src + '"), url("' + img.dataset.zoom + '")';
+        // The sharp image goes on top once it has loaded.
+        var big = new Image();
+        big.onload = function () { lens.style.backgroundImage = 'url("' + img.dataset.zoom + '")'; };
+        big.src = img.dataset.zoom;
+        document.body.appendChild(lens);
+      }
+      move(event);
+      lens.classList.add('on');
+    }
+    function move(event) {
+      var r = img.getBoundingClientRect();
+      var x = event.clientX - r.left, y = event.clientY - r.top;
+      var size = lens.offsetWidth;
+      lens.style.transform = 'translate(' + (event.clientX - size / 2) + 'px,' + (event.clientY - size / 2) + 'px)';
+      lens.style.backgroundSize = (r.width * ZOOM) + 'px ' + (r.height * ZOOM) + 'px';
+      lens.style.backgroundPosition = (size / 2 - x * ZOOM) + 'px ' + (size / 2 - y * ZOOM) + 'px';
+    }
+    img.addEventListener('mouseenter', show);
+    img.addEventListener('mousemove', function (e) { if (lens) move(e); });
+    img.addEventListener('mouseleave', function () { if (lens) lens.classList.remove('on'); });
+    img.style.cursor = 'zoom-in';
+  });
+})();

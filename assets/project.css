@@ -420,3 +420,14 @@ html { overflow-x: clip; }
   .bar-fill { height: 14px; width: calc(var(--v) / var(--max) * 100%); border-radius: 0 4px 4px 0; }
   .bar-value { position: static; transform: none; padding: 0; opacity: 1; font-size: .8em; }
 }
+
+/* Magnifying lens for images with data-zoom (see project.js). */
+.pj-lens {
+  position: fixed; left: 0; top: 0; z-index: 20;
+  width: clamp(180px, 22vw, 340px); aspect-ratio: 1;
+  border-radius: 50%; background: #fff no-repeat;
+  outline: 2px dashed #1f2a44; outline-offset: 4px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, .18);
+  pointer-events: none; opacity: 0; transition: opacity .15s;
+}
+.pj-lens.on { opacity: 1; }
