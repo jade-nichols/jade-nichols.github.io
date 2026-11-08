@@ -25,7 +25,7 @@ Visual reference: `_source/home_mockup_1.jpg`, `home_mockup_2.jpg`, `about_mocku
 - **8:5 and wider is the no-scroll layout; narrower windows scroll:** About follows the sketch; the About link scrolls to it and the name returns to the top.
 - **About in the no-scroll layout:** the "About" heading shares a line with "Nichols", with generous space to the window edges.
 - **Short windows:** type and menu scale with the sketch so the composition holds.
-- **Font:** Albert Sans, self-hosted in `assets/fonts/` (free, open license). Jade rejected Hanken Grotesk because of its J; check the J in any font change.
+- **Font:** Albert Sans, self-hosted in `assets/fonts/` (free, open license). The file only covers basic Latin plus common punctuation: letters like š or ć and symbols like → fall back to another font and look bold, so avoid them (e.g. "Kolasin", "to"). Jade rejected Hanken Grotesk because of its J; check the J in any font change.
 
 ### Sketching (`/sketching/`)
 Visual reference: `_source/sketching_land_mockup.jpg`, `_source/sketch_pg1_mockup.jpg`.
