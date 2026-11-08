@@ -305,6 +305,29 @@ html { overflow-x: clip; }
 .swot-s { --c: #5b88c4; } .swot-w { --c: #d9915a; } .swot-o { --c: #64a3a3; } .swot-t { --c: #ab333f; }
 
 .pj-end { margin-top: max(calc(120 * var(--u)), 64px); }
+/* Synergy: the wellness cycle beside the three kinds of care. */
+.pj-vision { display: grid; grid-template-columns: 1fr 1.35fr; gap: calc(1.5 * var(--gap)); align-items: center; }
+.pj-care { display: grid; grid-template-columns: repeat(3, 1fr); gap: calc(.6 * var(--gap)); margin: 0; padding: 0; list-style: none; }
+.pj-care > li { padding: 1em 1em 1.2em; background: var(--c); color: #fff; }
+.pj-care h3 { margin-bottom: .2em; font-size: 1.05em; }
+.pj-care-who { font-size: .8em; opacity: .85; }
+.pj-care ul { margin-top: .9em; padding-left: 1.1em; list-style: disc; font-size: .9em; }
+.pj-care ul li + li { margin-top: .25em; }
+
+/* A numbered site-plan key, set as text in three columns. */
+.pj-key { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap); font-size: .9em; }
+.pj-key ol { padding-left: 1.8em; }
+.pj-key li + li { margin-top: .2em; }
+
+/* Construction phases: pie and legend above each model, figures below. */
+.pj-phase-grid { row-gap: calc(2 * var(--gap)); }
+.pj-phase-head { display: flex; gap: 1em; align-items: center; }
+.pj-phase-head .pj-pie { flex: none; width: 4.5em; height: 4.5em; }
+.pj-phase-head .pj-legend { margin: 0; }
+.pj-phase-foot { display: flex; justify-content: space-between; align-items: flex-end; gap: 1em; }
+.pj-phase-foot h3 { margin: 0; }
+.pj-phase-foot p { font-size: .85em; line-height: 1.45; text-align: right; }
+
 /* South Main: two small locator maps beside the contribution text. */
 .pj-frontage figure { display: flex; flex-direction: column; }
 .pj-frontage img { max-height: 32em; width: auto; max-width: 100%; margin: 0 auto; }
@@ -374,6 +397,9 @@ html { overflow-x: clip; }
    the images keep getting smaller, so a paragraph can run far past its image.
    Below this width the text sits above its image instead. */
 @container (max-width: 899px) {
+  .pj-vision { grid-template-columns: 1fr; }
+  .pj-vision > img { max-width: 60%; margin: 0 auto; }
+  .pj-phase-grid { grid-template-columns: 1fr; }
   .pj-phases > li { grid-template-columns: 1fr; gap: .8em; }
   .pj-details { grid-template-columns: 1fr 1fr; }
   .pj-details figure, .pj-details figure:nth-child(4), .pj-details figure:nth-child(5) { grid-column: auto; }
@@ -407,6 +433,7 @@ html { overflow-x: clip; }
   .pj-toc { grid-template-columns: 1fr 1fr; }
   .pj-toc h3 { min-height: 0; }
   .pj-swot { grid-template-columns: 1fr 1fr; gap: 32px 20px; }
+  .pj-care, .pj-key { grid-template-columns: 1fr; }
   .pj-before-after > figure:first-child img { max-width: 60%; }
   .project-body .pj-bleed { margin-left: calc(-1 * var(--pad)); }
   .pj-grid-3 { grid-template-columns: 1fr; gap: 48px; }
