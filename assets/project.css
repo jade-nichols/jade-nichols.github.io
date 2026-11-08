@@ -101,6 +101,7 @@ body {
    Project content below the cover. Same column as the cover image.
    ------------------------------------------------------------------------ */
 .project-body {
+  container-type: inline-size;
   min-height: 0;
   width: var(--col);
   padding: calc(120 * var(--u)) 0 calc(160 * var(--u));
@@ -304,12 +305,25 @@ html { overflow-x: clip; }
 .pj-end { margin-top: max(calc(120 * var(--u)), 64px); }
 .pj-end .deliverable { margin: 0; }
 
+/* Text beside an image only works while the column is wide enough. In
+   narrower windows the body text stops shrinking (it has a minimum size) but
+   the images keep getting smaller, so a paragraph can run far past its image.
+   Below this width the text sits above its image instead. */
+@container (max-width: 899px) {
+  .pj-split, .pj-split-reverse, .pj-site, .pj-intro, .pj-intro-wide { grid-template-columns: 1fr; }
+  .pj-split .pj-text, .pj-split-reverse .pj-text, .pj-site-text, .pj-intro .pj-text { max-width: 44em; }
+  .pj-split-reverse > figure { order: 2; }
+  .pj-split > img, .pj-split > figure, .pj-split-reverse > figure, .pj-site > img { max-width: 80%; }
+  .pj-clipping { max-width: 300px; }
+}
+
 /* Phones and portrait tablets: everything in one column. */
 @media (max-width: 759px), (max-aspect-ratio: 1/1) {
   .project-body { width: auto; padding: 56px 0 96px; }
   .pj-intro, .pj-split, .pj-split-reverse, .pj-grid-2, .pj-grid-photos { grid-template-columns: 1fr; }
   .pj-clipping { max-width: 300px; }
   .pj-split-reverse figure { order: 2; }
+  .pj-split > img, .pj-split > figure, .pj-split-reverse > figure, .pj-site > img { max-width: none; }
   .pj-feature figure { width: 100%; }
   .pj-keyed h3 { position: static; transform: none; margin-bottom: .6em; }
   .pj-before-after, .pj-site, .pj-intro-wide { grid-template-columns: 1fr; }

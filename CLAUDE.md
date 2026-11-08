@@ -51,6 +51,7 @@ Visual reference: `_source/sketching_land_mockup.jpg`, `_source/sketch_pg1_mocku
 - **Headings and labels:** never all caps, even where the portfolio uses them. Capitalize only the first letter of each main word ("Crash Heatmap", "Before"). This includes text baked into images: crop it out and set it as page text instead.
 - **Map titles** sit just above that map's key, not centered over the map.
 - **Before and after:** the before photo sits beside the rendering, each labeled "Before" or "After" below its bottom-left corner.
+- **Text beside images:** a paragraph should never run far past the image beside it. When the content column is narrower than 900px, text-and-image pairs stack, with the text above the image (`@container` rule in `assets/project.css`).
 - **Full bleed:** large plans can span the whole window, edge to edge (`class="pj-bleed"`): the Greitzer site plan, the Chester masterplan, and the Pietralata methodology roadmap, street sections and four open space maps. Trim any white border from the image first.
 - **Template:** `projects/greitzer-memorial-park/` (built from `projectpage_mockup.jpg`), styled by `assets/project.css` and `assets/project.js`. Each project's images and PDFs go in `assets/<short-name>/`. The cover comes from the `landing image` in the project's `_source` folder.
 - **Chester:** `projects/reconnecting-across-chester/`, images in `assets/chester/`. Its `_source` folder has no landing image, so the cover is `Final Render 1.jpg`. The before photos and street sections come from the portfolio pages.
