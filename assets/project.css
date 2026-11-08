@@ -24,7 +24,20 @@ body {
   font-size: max(calc(25 * var(--u)), 16px);
   line-height: 1.44;
 }
-.back:hover, .more:hover { border-bottom-color: currentColor; }
+/* Next project: the mirror of Back, fixed in the bottom right. */
+.next {
+  position: fixed;
+  z-index: 2;
+  bottom: calc(80 * var(--u));
+  right: calc(62 * var(--u) + (100vw - 2000 * var(--u)) / 2);
+  display: inline-flex;
+  align-items: center;
+  border-bottom: 1px solid transparent;
+  font-size: max(calc(25 * var(--u)), 16px);
+  line-height: 1.44;
+}
+.next svg { display: block; overflow: visible; width: 1.16em; height: .4em; margin-left: .84em; fill: currentColor; stroke: currentColor; }
+.back:hover, .more:hover, .next:hover { border-bottom-color: currentColor; }
 .back svg { width: 1.16em; height: .4em; margin-right: .84em; }
 .back svg, .more svg { display: block; overflow: visible; fill: currentColor; stroke: currentColor; }
 
@@ -90,6 +103,8 @@ body {
     border-bottom: 0;
   }
   .back:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .18em; }
+  .next { bottom: 0; right: 0; padding: 12px var(--pad); background: #fff; border-bottom: 0; font-size: 16px; }
+  .next:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .18em; }
   .project { padding: 64px var(--pad) 0; }
   .cover { width: 100%; }
   .project-title { margin-top: 24px; font-size: clamp(26px, 7vw, 40px); scroll-margin-top: 64px; }
@@ -409,7 +424,7 @@ html { overflow-x: clip; }
   .pj-change, .pj-quotes { grid-template-columns: 1fr; }
   .pj-change > img { max-width: 80%; }
   .pj-tiers, .pj-hpds { grid-template-columns: 1fr; }
-  .pj-split, .pj-split-reverse, .pj-site, .pj-intro, .pj-intro-wide { grid-template-columns: 1fr; }
+  .pj-split, .pj-split-reverse, .pj-site, .pj-intro-wide { grid-template-columns: 1fr; }
   .pj-split .pj-text, .pj-split-reverse .pj-text, .pj-site-text, .pj-intro .pj-text { max-width: 44em; }
   .pj-split-reverse > figure { order: 2; }
   .pj-split > img, .pj-split > figure, .pj-split-reverse > figure, .pj-site > img { max-width: 80%; }
@@ -491,3 +506,11 @@ html { overflow-x: clip; }
   .pj-typ-4, .pj-typ-5 { grid-template-columns: 1fr 1fr; gap: calc(1.5 * var(--gap)) var(--gap); }
   .pj-typ-4 .pj-typ-img, .pj-typ-5 .pj-typ-img { aspect-ratio: 1.3; }
 }
+
+/* An embedded 3D viewer (Sketchfab), 16:9 at column width. */
+.pj-embed { position: relative; aspect-ratio: 16 / 9; background: #f2f2f2; }
+.pj-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+/* A hint that applies on touch screens too. */
+@media not ((hover: hover) and (pointer: fine)) { .pj-hint.pj-hint-all { display: block; } }
+/* The Greitzer intro keeps its narrow clipping beside the text until the column is small. */
+@container (max-width: 599px) { .pj-intro { grid-template-columns: 1fr; } }

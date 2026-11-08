@@ -79,3 +79,31 @@
     img.style.cursor = 'zoom-in';
   });
 })();
+
+// Next project: a fixed link in the bottom right, styled like Back, that goes
+// to the following project in the menu's order (the last one loops to the first).
+(function () {
+  var order = [
+    ['greitzer-memorial-park', 'Greitzer Memorial Park'],
+    ['before-the-stadium', 'Before the Stadium'],
+    ['reconnecting-across-chester', 'Reconnecting Across Chester'],
+    ['mcda-for-the-opc', 'MCDA for the OPC'],
+    ['synergy', 'Synergy: A Social Wellness Hub'],
+    ['complete-ing-south-main', 'Complete-ing South Main'],
+    ['event-emissions', 'Emissions Calculator'],
+    ['third-rail', 'Third Rail'],
+    ['spomen-dom', 'Spomen Dom']
+  ];
+  var here = location.pathname.split('/').filter(Boolean);
+  var slug = here[here.length - 1];
+  var i = order.findIndex(function (p) { return p[0] === slug; });
+  if (i < 0) return;
+  var next = order[(i + 1) % order.length];
+  var a = document.createElement('a');
+  a.className = 'next';
+  a.href = '../' + next[0] + '/';
+  a.title = 'Next project: ' + next[1];
+  a.setAttribute('aria-label', 'Next project: ' + next[1]);
+  a.innerHTML = 'Next<svg viewBox="0 0 29 10" aria-hidden="true"><path d="M0 5H21" fill="none"/><path d="M29 5 20 1.5V8.5Z" stroke="none"/></svg>';
+  document.body.appendChild(a);
+})();
