@@ -46,7 +46,7 @@
 // only loads on first hover. Mouse and trackpad only; touch screens skip it.
 (function () {
   if (!matchMedia('(hover: hover) and (pointer: fine)').matches) return;
-  var ZOOM = 2.5;
+  var ZOOM = 4;
   document.querySelectorAll('img[data-zoom]').forEach(function (img) {
     var lens = null;
     function show(event) {
