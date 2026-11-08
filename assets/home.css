@@ -433,26 +433,3 @@ body {
    is clicked keeps them from flashing over the home page while the reverse
    animation plays. */
 html:not(.sketching) .sk-pages { display: none; }
-
-/* Sketch viewer (see home.js): a sketch shown large over the dimmed page. */
-.sk-pages img { cursor: zoom-in; }
-.sk-viewer {
-  position: fixed; inset: 0; z-index: 50;
-  display: flex; align-items: center; justify-content: center;
-  padding: clamp(48px, 7vh, 88px) clamp(16px, 5vw, 96px);
-  background: rgba(20, 20, 20, .45);
-  opacity: 0; visibility: hidden; transition: opacity .25s, visibility 0s linear .25s;
-}
-.sk-viewer.on { opacity: 1; visibility: visible; transition: opacity .25s; }
-.sk-viewer img {
-  max-width: 100%; max-height: 100%; width: auto; height: auto;
-  background: #fff; box-shadow: 0 10px 40px rgba(0, 0, 0, .25);
-  transform: scale(.97); transition: transform .25s;
-}
-.sk-viewer.on img { transform: none; }
-.sk-viewer-close {
-  position: absolute; top: clamp(14px, 3vh, 32px); left: clamp(14px, 3vw, 40px);
-  width: 40px; height: 40px; padding: 10px; border: 0; border-radius: 50%;
-  background: #fff; color: #1a1a1a; cursor: pointer;
-}
-.sk-viewer-close svg { display: block; width: 100%; height: 100%; stroke: currentColor; stroke-width: 2; fill: none; }
