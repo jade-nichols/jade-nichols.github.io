@@ -217,9 +217,6 @@ figcaption, .pj-credit {
   font-size: .75em; line-height: 1.2; text-align: center;
 }
 
-/* A wide map under the text, with the usual gap above. */
-.pj-context { margin-top: calc(1.5 * var(--gap)); }
-.pj-parcels { row-gap: calc(1.5 * var(--gap)); }
 
 /* Before photo beside the rendering, both ending on the same line. */
 .pj-before-after { display: grid; grid-template-columns: 1fr 2.4fr; gap: var(--gap); align-items: end; }
@@ -230,6 +227,9 @@ figcaption, .pj-credit {
 .pj-site-text h3 { margin-bottom: 1em; }
 .pj-points { margin-top: 1.4em; padding-left: 1.1em; list-style: disc; }
 .pj-points li + li { margin-top: .6em; }
+/* Full bleed: the image spans the whole window, edge to edge. */
+html { overflow-x: clip; }
+.project-body .pj-bleed { width: 100vw; max-width: none; margin-left: calc(-1 * var(--left)); }
 
 .pj-end { margin-top: max(calc(120 * var(--u)), 64px); }
 .pj-end .deliverable { margin: 0; }
@@ -243,6 +243,7 @@ figcaption, .pj-credit {
   .pj-feature figure { width: 100%; }
   .pj-before-after, .pj-site { grid-template-columns: 1fr; }
   .pj-before-after img:first-child { max-width: 60%; }
+  .project-body .pj-bleed { margin-left: calc(-1 * var(--pad)); }
   .pj-grid-3 { grid-template-columns: 1fr; gap: 48px; }
   .pj-maps { grid-template-columns: repeat(3, 1fr); gap: 12px; }
   .pj-maps .pj-legend { font-size: 11px; }
