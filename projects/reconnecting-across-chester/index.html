@@ -54,8 +54,6 @@
           <p>With partner Nikhil Matthew, I developed neighborhood connectivity strategies across three development sites in Zone 1. I also led the corridor-wide Chester Avenue redesign discussions for all four project teams and presented the final proposal to project partners.</p>
         </div>
 
-        <img class="pj-context" src="../../assets/chester/context.jpg" width="2000" height="1294" loading="lazy" alt="Neighborhood context map: Chester Avenue runs from Downtown Cleveland to University Circle, between Hough to the north and Midtown, Fairfax and the Cleveland Clinic to the south. The study area is outlined in red.">
-
         <div class="pj-grid-2 pj-maps">
           <figure>
             <h3>Study Area</h3>
@@ -70,16 +68,18 @@
 
       <section class="pj-section">
         <h2>Safety Analysis</h2>
-        <div class="pj-feature">
-          <figure>
+        <!-- Each title sits just above its map's key; --kx and --ky are the
+             key's top-left corner, measured as a share of the image. -->
+        <div class="pj-feature pj-keyed">
+          <figure style="--kx:73.9%; --ky:42.5%">
             <h3>Crash Heatmap</h3>
             <img src="../../assets/chester/crash-heatmap.jpg" width="1280" height="503" loading="lazy" alt="Crash heatmap: the most crashes cluster where East 55th Street meets Chester and Euclid Avenues, with smaller hot spots at other Chester intersections.">
           </figure>
-          <figure>
+          <figure style="--kx:79%; --ky:41.5%">
             <h3>Biking Level of Stress</h3>
             <img src="../../assets/chester/biking-stress.jpg" width="1800" height="780" loading="lazy" alt="Biking level of stress map: Chester Avenue and East 55th Street are level 4, the highest; most side streets are levels 1 and 2.">
           </figure>
-          <figure>
+          <figure style="--kx:79.1%; --ky:40.5%">
             <h3>Crossing Level of Stress</h3>
             <img src="../../assets/chester/crossing-stress.jpg" width="1800" height="780" loading="lazy" alt="Crossing level of stress map: most crossings of Chester Avenue are level 4, the highest, while side street crossings are mostly levels 1 and 2.">
           </figure>
@@ -97,24 +97,6 @@
             <h3>Proposed Streetscape</h3>
             <img src="../../assets/chester/proposed-streetscape.jpg" width="2000" height="1011" loading="lazy" alt="Section of the proposed Chester Avenue: five driving and turning lanes, a pedestrian refuge island, a twelve-foot bi-directional bike lane between tree buffers, and wider sidewalks lined with shops and homes.">
           </figure>
-        </div>
-      </section>
-
-      <section class="pj-section">
-        <h2>Parcel Analysis</h2>
-        <div class="pj-grid-2 pj-parcels">
-          <img src="../../assets/chester/parcel-vacancy.jpg" width="1600" height="517" loading="lazy" alt="Vacancy map of parcels along Chester Avenue: vacant, partially vacant and occupied.">
-          <img src="../../assets/chester/parcel-land-value.jpg" width="1600" height="517" loading="lazy" alt="Land value map of parcels along Chester Avenue: high (over $1,000,000), medium ($250,000 to $1,000,000) and low (under $250,000).">
-          <img src="../../assets/chester/parcel-ownership.jpg" width="1600" height="517" loading="lazy" alt="Ownership map of parcels along Chester Avenue: public (CMHA, land bank, etc.), non-profit and private.">
-          <img src="../../assets/chester/parcel-condition.jpg" width="1600" height="517" loading="lazy" alt="Building condition map of parcels along Chester Avenue: poor, average and good (or empty).">
-        </div>
-      </section>
-
-      <section class="pj-section">
-        <h2>Chester Avenue &amp; 55th Street</h2>
-        <div class="pj-before-after">
-          <img src="../../assets/chester/before-55th.jpg" width="880" height="494" loading="lazy" alt="Before: the wide, empty intersection of Chester Avenue and East 55th Street, with a U-Haul lot on the corner.">
-          <img src="../../assets/chester/render-55th.jpg" width="2400" height="1553" loading="lazy" alt="After: the same intersection with a painted crosswalk mural, a protected bike lane, street trees and new shops.">
         </div>
       </section>
 
@@ -163,14 +145,34 @@
 
       <section class="pj-section">
         <h2>Connectivity Masterplan</h2>
-        <img src="../../assets/chester/masterplan.jpg" width="2400" height="1456" loading="lazy" alt="Masterplan of the three sites along the redesigned Chester Avenue: blue routes link the sites north into Hough, orange routes link them south into Midtown, and a rail trail connects to the Dunham Tavern Museum grounds.">
+        <img class="pj-bleed" src="../../assets/chester/masterplan.jpg" width="2389" height="1546" loading="lazy" alt="Masterplan of the three sites along the redesigned Chester Avenue: blue routes link the sites north into Hough, orange routes link them south into Midtown, and a rail trail connects to the Dunham Tavern Museum grounds.">
+      </section>
+
+      <section class="pj-section">
+        <h2>Chester Avenue &amp; 55th Street</h2>
+        <div class="pj-before-after">
+          <figure>
+            <img src="../../assets/chester/before-55th.jpg" width="880" height="394" loading="lazy" alt="The wide, empty intersection of Chester Avenue and East 55th Street, with a U-Haul lot on the corner.">
+            <figcaption>Before</figcaption>
+          </figure>
+          <figure>
+            <img src="../../assets/chester/render-55th.jpg" width="2400" height="1553" loading="lazy" alt="The same intersection with a painted crosswalk mural, a protected bike lane, street trees and new shops.">
+            <figcaption>After</figcaption>
+          </figure>
+        </div>
       </section>
 
       <section class="pj-section">
         <h2>Chester Avenue &amp; 63rd Street</h2>
         <div class="pj-before-after">
-          <img src="../../assets/chester/before-63rd.jpg" width="932" height="522" loading="lazy" alt="Before: East 63rd Street off Chester Avenue, a bare road between a blank brick wall and an empty lawn.">
-          <img src="../../assets/chester/render-63rd.jpg" width="2400" height="1553" loading="lazy" alt="After: a brick-paved street with a Cleveland mural on the wall, café tables, a food truck, string lights, and people walking and skateboarding past a new shop.">
+          <figure>
+            <img src="../../assets/chester/before-63rd.jpg" width="932" height="400" loading="lazy" alt="East 63rd Street off Chester Avenue, a bare road between a blank brick wall and an empty lawn.">
+            <figcaption>Before</figcaption>
+          </figure>
+          <figure>
+            <img src="../../assets/chester/render-63rd.jpg" width="2400" height="1553" loading="lazy" alt="A brick-paved street with a Cleveland mural on the wall, café tables, a food truck, string lights, and people walking and skateboarding past a new shop.">
+            <figcaption>After</figcaption>
+          </figure>
         </div>
       </section>
 

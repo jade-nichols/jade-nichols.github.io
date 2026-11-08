@@ -153,6 +153,10 @@ figcaption, .pj-credit {
 .pj-feature { display: grid; gap: calc(2 * var(--gap)); margin-top: calc(2.5 * var(--gap)); }
 .pj-feature figure { width: 84%; margin: 0 auto; }
 .pj-feature h3 { text-align: center; }
+
+/* Map titles placed just above each map's key (see --kx and --ky on the figure). */
+.pj-keyed figure { position: relative; }
+.pj-keyed h3 { position: absolute; left: var(--kx); top: var(--ky); right: 0; margin: 0; transform: translateY(calc(-100% - .5em)); text-align: left; line-height: 1.3; }
 .pj-wide { margin-bottom: var(--gap); }
 
 /* Map legends, matched to the colors in the maps. */
@@ -241,6 +245,7 @@ html { overflow-x: clip; }
   .pj-clipping { max-width: 300px; }
   .pj-split-reverse figure { order: 2; }
   .pj-feature figure { width: 100%; }
+  .pj-keyed h3 { position: static; transform: none; margin-bottom: .6em; }
   .pj-before-after, .pj-site { grid-template-columns: 1fr; }
   .pj-before-after img:first-child { max-width: 60%; }
   .project-body .pj-bleed { margin-left: calc(-1 * var(--pad)); }
