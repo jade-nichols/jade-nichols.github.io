@@ -47,7 +47,7 @@
 // only loads on first hover. Mouse and trackpad only; touch screens skip it.
 (function () {
   if (!matchMedia('(hover: hover) and (pointer: fine)').matches) return;
-  var ZOOM = 4;
+  var DEFAULT_ZOOM = 4;
   document.querySelectorAll('img[data-zoom]').forEach(function (img) {
     var lens = null;
     function show(event) {
@@ -70,6 +70,7 @@
       var x = event.clientX - r.left, y = event.clientY - r.top;
       var size = lens.offsetWidth;
       lens.style.transform = 'translate(' + (event.clientX - size / 2) + 'px,' + (event.clientY - size / 2) + 'px)';
+      var ZOOM = parseFloat(img.dataset.zoomLevel) || DEFAULT_ZOOM;
       lens.style.backgroundSize = (r.width * ZOOM) + 'px ' + (r.height * ZOOM) + 'px';
       lens.style.backgroundPosition = (size / 2 - x * ZOOM) + 'px ' + (size / 2 - y * ZOOM) + 'px';
     }

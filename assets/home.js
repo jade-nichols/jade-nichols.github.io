@@ -187,3 +187,47 @@
   if (document.readyState === 'complete') prepare();
   else window.addEventListener('load', prepare);
 })();
+
+// Sketch viewer: clicking a sketch opens it large over a dimmed page; the X
+// in the top left (or Escape, or a click on the dimmed area) closes it.
+// Delegated, because the sketches are inserted when Sketching opens from home.
+(function () {
+  var box = null, pic = null, last = null;
+  function build() {
+    box = document.createElement('div');
+    box.className = 'sk-viewer';
+    box.setAttribute('role', 'dialog');
+    box.setAttribute('aria-modal', 'true');
+    box.innerHTML = '<button class="sk-viewer-close" type="button" aria-label="Close">' +
+      '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 2 18 18M18 2 2 18"/></svg></button><img alt="">';
+    pic = box.querySelector('img');
+    box.addEventListener('click', function (e) { if (e.target !== pic) close(); });
+    // Keep the page behind from scrolling while a sketch is open.
+    ['wheel', 'touchmove'].forEach(function (t) { box.addEventListener(t, function (e) { e.preventDefault(); }, { passive: false }); });
+    document.body.appendChild(box);
+  }
+  function open(img) {
+    if (!box) build();
+    last = img;
+    pic.src = img.currentSrc || img.src;
+    pic.alt = img.alt;
+    document.documentElement.classList.add('sk-viewing');
+    box.classList.add('on');
+    box.querySelector('.sk-viewer-close').focus({ preventScroll: true });
+  }
+  function close() {
+    if (!box || !box.classList.contains('on')) return;
+    box.classList.remove('on');
+    document.documentElement.classList.remove('sk-viewing');
+    if (last) last.focus({ preventScroll: true });
+  }
+  document.addEventListener('click', function (e) {
+    var img = e.target.closest && e.target.closest('.sk-pages img');
+    if (img) { e.preventDefault(); open(img); }
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') close();
+    var img = e.target.closest && e.target.closest('.sk-pages img');
+    if (img && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); open(img); }
+  });
+})();
