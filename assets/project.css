@@ -55,7 +55,7 @@ body {
 }
 .project-meta li + li { margin-top: calc(20 * var(--u)); }
 /* Who worked on it: small, slightly bold, light grey, under the date. */
-.project-team { margin-top: calc(20 * var(--u)); font-size: max(calc(15 * var(--u)), 13px); font-weight: 600; color: #9a9a9a; line-height: 1.35; }
+.project-team { margin-top: calc(20 * var(--u)); font-size: max(calc(15 * var(--u)), 13px); font-weight: 500; color: #9a9a9a; line-height: 1.35; }
 
 .deliverable {
   display: inline-block;
