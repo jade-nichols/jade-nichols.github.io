@@ -463,3 +463,9 @@ html { overflow-x: clip; }
 /* A small note telling mouse users the image below can be magnified. */
 .pj-hint { margin: -.4em 0 1em; font-size: .8em; color: #6f6f6f; }
 @media not ((hover: hover) and (pointer: fine)) { .pj-hint { display: none; } }
+
+/* Third Rail: four garment models in one row, the same height. */
+.pj-models { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--gap); }
+.pj-models img { aspect-ratio: 3 / 4; object-fit: contain; background: #fff; }
+.pj-concept { align-items: start; }
+@container (max-width: 899px) { .pj-models { grid-template-columns: 1fr 1fr; } }
