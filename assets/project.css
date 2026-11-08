@@ -235,6 +235,38 @@ figcaption, .pj-credit {
 html { overflow-x: clip; }
 .project-body .pj-bleed { width: 100vw; max-width: none; margin-left: calc(-1 * var(--left)); }
 
+/* Space above a figure that follows text. */
+.pj-gap-top { margin-top: calc(1.5 * var(--gap)); }
+
+/* Intro beside a numbered list (research questions) instead of a clipping. */
+.pj-intro-wide { grid-template-columns: 1fr minmax(0, 34%); }
+.pj-questions ol { padding-left: 1.4em; }
+.pj-questions li + li { margin-top: .8em; }
+.pj-questions li::marker { font-weight: 600; }
+
+/* Key figures for a project, two by two. */
+.pj-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2em var(--gap); margin: 1.6em 0 0; }
+.pj-stats dt { font-size: .8em; color: #6f6f6f; }
+.pj-stats dd { margin: .2em 0 0; font-size: 1.25em; font-weight: 600; line-height: 1.25; }
+
+/* Two tall maps side by side, bottoms aligned. */
+.pj-maps-tall { align-items: end; }
+.pj-feature-one { width: 84%; margin: calc(2.5 * var(--gap)) auto 0; }
+.pj-feature-one h3 { text-align: center; }
+
+/* Cognitive maps: a loose grid, each drawing with its reader's name and note. */
+.pj-cogmaps { display: grid; grid-template-columns: repeat(6, 1fr); gap: calc(1.5 * var(--gap)) var(--gap); margin-top: calc(2 * var(--gap)); align-items: start; }
+.pj-cogmaps figure { grid-column: span 2; }
+.pj-cogmaps figure:nth-child(4), .pj-cogmaps figure:nth-child(5) { grid-column: span 3; width: 62%; justify-self: center; }
+.pj-cogmaps figcaption b { display: block; margin-bottom: .2em; color: #1a1a1a; font-weight: 600; }
+
+/* SWOT: four short columns, each marked with its color from the report. */
+.pj-swot { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--gap); }
+.pj-swot > div { padding-top: .9em; border-top: 6px solid var(--c); }
+.pj-swot ul { font-size: .9em; }
+.pj-swot li + li { margin-top: .7em; }
+.swot-s { --c: #5b88c4; } .swot-w { --c: #d9915a; } .swot-o { --c: #64a3a3; } .swot-t { --c: #ab333f; }
+
 .pj-end { margin-top: max(calc(120 * var(--u)), 64px); }
 .pj-end .deliverable { margin: 0; }
 
@@ -246,7 +278,11 @@ html { overflow-x: clip; }
   .pj-split-reverse figure { order: 2; }
   .pj-feature figure { width: 100%; }
   .pj-keyed h3 { position: static; transform: none; margin-bottom: .6em; }
-  .pj-before-after, .pj-site { grid-template-columns: 1fr; }
+  .pj-before-after, .pj-site, .pj-intro-wide { grid-template-columns: 1fr; }
+  .pj-feature-one { width: 100%; }
+  .pj-cogmaps { grid-template-columns: 1fr; gap: 40px; }
+  .pj-cogmaps figure, .pj-cogmaps figure:nth-child(4), .pj-cogmaps figure:nth-child(5) { grid-column: auto; width: 100%; }
+  .pj-swot { grid-template-columns: 1fr 1fr; gap: 32px 20px; }
   .pj-before-after img:first-child { max-width: 60%; }
   .project-body .pj-bleed { margin-left: calc(-1 * var(--pad)); }
   .pj-grid-3 { grid-template-columns: 1fr; gap: 48px; }

@@ -55,6 +55,7 @@ Visual reference: `_source/sketching_land_mockup.jpg`, `_source/sketch_pg1_mocku
 - **Template:** `projects/greitzer-memorial-park/` (built from `projectpage_mockup.jpg`), styled by `assets/project.css` and `assets/project.js`. Each project's images and PDFs go in `assets/<short-name>/`. The cover comes from the `landing image` in the project's `_source` folder.
 - **Chester:** `projects/reconnecting-across-chester/`, images in `assets/chester/`. Its `_source` folder has no landing image, so the cover is `Final Render 1.jpg`. The before photos and street sections come from the portfolio pages.
 - **Greitzer report:** `assets/greitzer/greitzer-report.pdf` is the 10 MB final report, linked from the cover and the end of the page.
+- **Before the Stadium:** `projects/before-the-stadium/`, images in `assets/pietralata/`, titled "Monti di Pietralata Before the Stadium" (the menu keeps "Before the Stadium"). Not in the portfolio, so the text is copied verbatim from `Monti di Pietralata Final Report.pdf`; images come from the report, `maps/`, `charts/`, the pamphlet JPGs and `Poster4Final.pdf`. The full report (20 MB) is the deliverable.
 - **PDF size:** GitHub warns about files over 50 MB and refuses ones over 100 MB, and big PDFs are slow to open on phones. Check sizes before committing.
 
 ## Folder structure
