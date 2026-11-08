@@ -424,6 +424,9 @@ body {
   .sketching .about { display: block; opacity: 0; visibility: hidden; }
   .sk-page { min-height: var(--h); align-content: center; }
   .sk-page + .sk-page { margin-top: 0; }
+  /* Rows of horizontal sketches are short; a full window each would leave them
+     floating in white space, so they take their own height instead. */
+  .sk-row-wide { min-height: 0; padding-block: clamp(64px, 10vh, 160px); }
 }
 
 /* The sketches only belong to the Sketching view. Hiding them as soon as Back
