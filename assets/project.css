@@ -7,7 +7,7 @@
 @supports (height: 100dvh) { :root { --h: 100dvh; } }
 
 body {
-  --u: min(calc(100vw / 2000), calc(var(--h) / 1125));
+  --u: min(calc(100vw / 2000), calc((var(--h) - 56px) / 1125)); /* 56px: room for the team line and a two-line title */
   --left: calc(287 * var(--u) + (100vw - 2000 * var(--u)) / 2);
   --col: calc(1232 * var(--u));
 }
@@ -54,6 +54,8 @@ body {
   line-height: 1.3;
 }
 .project-meta li + li { margin-top: calc(20 * var(--u)); }
+/* Who worked on it: small, slightly bold, light grey, under the date. */
+.project-team { margin-top: calc(20 * var(--u)); font-size: max(calc(15 * var(--u)), 13px); font-weight: 600; color: #9a9a9a; line-height: 1.35; }
 
 .deliverable {
   display: inline-block;
@@ -93,6 +95,7 @@ body {
   .project-title { margin-top: 24px; font-size: clamp(26px, 7vw, 40px); scroll-margin-top: 64px; }
   .project-meta { margin-top: 12px; font-size: 16px; }
   .project-meta li + li { margin-top: 8px; }
+  .project-team { margin-top: 10px; font-size: 13px; }
   .deliverable { margin-top: 24px; font-size: 16px; }
   .more { gap: 6px; font-size: 15px; }
 }
@@ -472,3 +475,19 @@ html { overflow-x: clip; }
 /* Wide drawings that run from the column to the right edge of the window. */
 .project-body .pj-bleed-right { width: calc(100vw - var(--left)); max-width: none; }
 @media (max-width: 759px), (max-aspect-ratio: 1/1) { .project-body .pj-bleed-right { width: calc(100% + var(--pad)); } .pj-concept { grid-template-columns: 1fr; } }
+
+/* Synergy typologies: models on one scale, bottoms on one line, text aligned below. */
+.pj-typ { display: grid; gap: 0 var(--gap); align-items: start; }
+.pj-typ-4 { grid-template-columns: repeat(4, 1fr); }
+.pj-typ-5 { grid-template-columns: repeat(5, 1fr); margin-top: calc(2 * var(--gap)); }
+.pj-typ-img { display: flex; align-items: flex-end; justify-content: center; }
+.pj-typ-4 .pj-typ-img { aspect-ratio: 1.25; }
+.pj-typ-5 .pj-typ-img { aspect-ratio: 1.7; }
+.project-body .pj-typ-img img { height: auto; flex: none; }
+.pj-typ figcaption { margin-top: 1em; font-size: .72em; line-height: 1.45; color: #4a4a4a; }
+.pj-typ figcaption b { display: block; margin-bottom: .2em; color: #1a1a1a; font-weight: 600; }
+.pj-typ figcaption span { display: block; margin-top: .7em; }
+@container (max-width: 899px) {
+  .pj-typ-4, .pj-typ-5 { grid-template-columns: 1fr 1fr; gap: calc(1.5 * var(--gap)) var(--gap); }
+  .pj-typ-4 .pj-typ-img, .pj-typ-5 .pj-typ-img { aspect-ratio: 1.3; }
+}
