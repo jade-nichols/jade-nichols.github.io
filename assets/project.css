@@ -407,7 +407,7 @@ html { overflow-x: clip; }
   .pj-toc { grid-template-columns: 1fr 1fr; }
   .pj-toc h3 { min-height: 0; }
   .pj-swot { grid-template-columns: 1fr 1fr; gap: 32px 20px; }
-  .pj-before-after img:first-child { max-width: 60%; }
+  .pj-before-after > figure:first-child img { max-width: 60%; }
   .project-body .pj-bleed { margin-left: calc(-1 * var(--pad)); }
   .pj-grid-3 { grid-template-columns: 1fr; gap: 48px; }
   .pj-grid-3.pj-maps { grid-template-columns: repeat(3, 1fr); gap: 12px; }
