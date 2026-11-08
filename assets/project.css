@@ -304,16 +304,13 @@ html { overflow-x: clip; }
 
 .pj-end { margin-top: max(calc(120 * var(--u)), 64px); }
 /* South Main: two small locator maps beside the contribution text. */
-.pj-context-set { display: grid; grid-template-columns: 2.4fr 1fr; gap: var(--gap); align-items: center; }
 .pj-frontage figure { display: flex; flex-direction: column; }
 .pj-frontage img { max-height: 32em; width: auto; max-width: 100%; margin: 0 auto; }
 .sw-empty { background: #fff; border: 1px solid #b0b0b0; }
 
 /* Design details: round crops like the portfolio's callouts. */
-.pj-details { display: grid; grid-template-columns: repeat(6, 1fr); gap: calc(1.5 * var(--gap)) var(--gap); margin-top: calc(2 * var(--gap)); }
-.pj-details figure { grid-column: span 2; text-align: center; }
-.pj-details figure:nth-child(4) { grid-column: 2 / span 2; }
-.pj-details figure:nth-child(5) { grid-column: 4 / span 2; }
+.pj-details { display: grid; grid-template-columns: repeat(4, 1fr); gap: calc(1.5 * var(--gap)) var(--gap); margin-top: calc(2 * var(--gap)); }
+.pj-details figure { text-align: center; }
 .pj-details img { border-radius: 50%; outline: 2px dashed #1f2a44; outline-offset: .5em; width: 82%; margin: .5em auto 0; }
 .pj-details figcaption { margin-top: 1.2em; }
 
