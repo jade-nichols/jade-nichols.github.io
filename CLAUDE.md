@@ -49,7 +49,7 @@ Visual reference: `_source/sketching_land_mockup.jpg`, `_source/sketch_pg1_mocku
 - **More (right side):** scrolls down until no part of the cover image shows at any screen size, with the title first on screen. Normal scrolling also works. Unlike Back, More does not follow the scroll.
 - **Project content:** loosely based on the project's pages in `_source/Jade Nichols Urban Planning and Design Portfolio.pdf`, with its text copied verbatim (including captions and collaborator credits). Images, maps, and diagrams come from the project's `_source` folder, chosen and organized in the site's style. Greitzer is the reference example.
 - **Template:** `projects/greitzer-memorial-park/` (built from `projectpage_mockup.jpg`), styled by `assets/project.css` and `assets/project.js`. Each project's images and PDFs go in `assets/<short-name>/`. The cover comes from the `landing image` in the project's `_source` folder.
-- **Greitzer report:** both "Access Full Report" links are commented out in its page until a smaller PDF is ready.
+- **Greitzer report:** `assets/greitzer/greitzer-report.pdf` is the 10 MB final report, linked from the cover and the end of the page.
 - **PDF size:** GitHub warns about files over 50 MB and refuses ones over 100 MB, and big PDFs are slow to open on phones. Check sizes before committing.
 
 ## Folder structure
