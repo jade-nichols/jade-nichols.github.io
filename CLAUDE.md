@@ -46,7 +46,7 @@ Visual reference: `_source/sketching_land_mockup.jpg`, `_source/sketch_pg1_mocku
   - Full report or paper: Johnson City, Pietralata, MCDA
   - ArchFab link: Spomen Dom
   - Full presentation deck: Synergy, Chester
-- **More (right side):** scrolls down until no part of the cover image shows at any screen size, with the title first on screen. Normal scrolling also works. Unlike Back, More does not follow the scroll.
+- **More (right side):** scrolls down past the whole cover section (image, title, type, location, date) so the intro text is the first thing on screen, at any screen size. Normal scrolling also works. Unlike Back, More does not follow the scroll.
 - **Project content:** loosely based on the project's pages in `_source/Jade Nichols Urban Planning and Design Portfolio.pdf`, with its text copied verbatim (including captions and collaborator credits). Images, maps, and diagrams come from the project's `_source` folder, chosen and organized in the site's style. Greitzer is the reference example.
 - **Headings and labels:** never all caps, even where the portfolio uses them. Capitalize only the first letter of each main word ("Crash Heatmap", "Before"). This includes text baked into images: crop it out and set it as page text instead.
 - **Map titles** sit just above that map's key, not centered over the map.

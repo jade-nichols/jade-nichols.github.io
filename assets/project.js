@@ -24,7 +24,8 @@
     event.preventDefault();
     var mine = ++glide;
     var start = window.scrollY;
-    var distance = cover.getBoundingClientRect().bottom - topInset();
+    var first = document.querySelector(".project-body .pj-section") || document.querySelector(".project-body");
+    var distance = first.getBoundingClientRect().top - topInset() - 48;
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
       window.scrollTo({ top: start + distance, behavior: 'instant' });
       return;

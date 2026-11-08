@@ -230,6 +230,8 @@ figcaption, .pj-credit {
 .pj-site { display: grid; grid-template-columns: 36% 1fr; gap: calc(1.5 * var(--gap)); align-items: start; }
 .pj-site + .pj-site { margin-top: calc(3 * var(--gap)); }
 .pj-site-text h3 { margin-bottom: 1em; }
+/* The pencil sketch stays small when the site stacks in narrow windows. */
+.pj-site-text img { max-width: 420px; }
 .pj-points { margin-top: 1.4em; padding-left: 1.1em; list-style: disc; }
 .pj-points li + li { margin-top: .6em; }
 /* Full bleed: the image spans the whole window, edge to edge. */
@@ -408,7 +410,7 @@ html { overflow-x: clip; }
   .pj-before-after img:first-child { max-width: 60%; }
   .project-body .pj-bleed { margin-left: calc(-1 * var(--pad)); }
   .pj-grid-3 { grid-template-columns: 1fr; gap: 48px; }
-  .pj-maps { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .pj-grid-3.pj-maps { grid-template-columns: repeat(3, 1fr); gap: 12px; }
   .pj-maps .pj-legend { font-size: 11px; }
   /* The chart turns sideways so the labels have room; counts always show. */
   .chart { padding: 0; }
