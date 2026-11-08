@@ -431,3 +431,6 @@ html { overflow-x: clip; }
   pointer-events: none; opacity: 0; transition: opacity .15s;
 }
 .pj-lens.on { opacity: 1; }
+/* A small note telling mouse users the image below can be magnified. */
+.pj-hint { margin: -.4em 0 1em; font-size: .8em; color: #6f6f6f; }
+@media not ((hover: hover) and (pointer: fine)) { .pj-hint { display: none; } }
