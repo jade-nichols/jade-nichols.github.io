@@ -263,6 +263,11 @@ html { overflow-x: clip; }
 .pj-photo-chart figcaption { position: absolute; }
 .pj-photo-chart figure { position: relative; }
 
+/* Word clouds side by side, tops aligned, with one shared color key below. */
+.pj-clouds { align-items: start; }
+.pj-cloud-key { display: flex; flex-wrap: wrap; justify-content: center; gap: .4em 1.6em; margin-top: 1em; font-size: .85em; }
+.pj-cloud-key span { color: var(--c); }
+
 /* The photo of someone drawing, below the text and above the drawings. */
 .pj-drawing-photo { max-width: 60%; }
 
