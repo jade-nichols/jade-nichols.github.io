@@ -464,8 +464,11 @@ html { overflow-x: clip; }
 .pj-hint { margin: -.4em 0 1em; font-size: .8em; color: #6f6f6f; }
 @media not ((hover: hover) and (pointer: fine)) { .pj-hint { display: none; } }
 
-/* Third Rail: four garment models in one row, the same height. */
-.pj-models { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--gap); }
-.pj-models img { aspect-ratio: 3 / 4; object-fit: contain; background: #fff; }
-.pj-concept { align-items: start; }
-@container (max-width: 899px) { .pj-models { grid-template-columns: 1fr 1fr; } }
+/* Third Rail: the four garment models trimmed to the figure and shown at one height. */
+.pj-models { display: flex; justify-content: space-around; align-items: flex-end; gap: var(--gap); }
+.project-body .pj-models img { width: auto; height: min(30em, 55cqi); max-width: none; }
+/* Mood board and sketches at the same height: columns in proportion to each image. */
+.pj-concept { display: grid; grid-template-columns: 1.370fr 0.862fr; gap: var(--gap); align-items: start; }
+/* Wide drawings that run from the column to the right edge of the window. */
+.project-body .pj-bleed-right { width: calc(100vw - var(--left)); max-width: none; }
+@media (max-width: 759px), (max-aspect-ratio: 1/1) { .project-body .pj-bleed-right { width: calc(100% + var(--pad)); } .pj-concept { grid-template-columns: 1fr; } }
