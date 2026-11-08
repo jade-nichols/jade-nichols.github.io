@@ -244,21 +244,50 @@ html { overflow-x: clip; }
 .pj-questions li + li { margin-top: .8em; }
 .pj-questions li::marker { font-weight: 600; }
 
-/* Key figures for a project, two by two. */
-.pj-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2em var(--gap); margin: 1.6em 0 0; }
+/* Key figures for a project: one row of four, each starting on the same line. */
+.pj-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--gap); margin: calc(1.5 * var(--gap)) 0 0; }
+.pj-stats > div { padding-top: .8em; border-top: 1px solid #d6d6d6; }
 .pj-stats dt { font-size: .8em; color: #6f6f6f; }
-.pj-stats dd { margin: .2em 0 0; font-size: 1.25em; font-weight: 600; line-height: 1.25; }
+.pj-stats dd { margin: .3em 0 0; font-size: 1.25em; font-weight: 600; line-height: 1.25; }
+.pj-stats dd.pj-stat-note { margin-top: .25em; font-size: .8em; font-weight: 400; color: #6f6f6f; }
 
-/* Two tall maps side by side, bottoms aligned. */
-.pj-maps-tall { align-items: end; }
-.pj-feature-one { width: 84%; margin: calc(2.5 * var(--gap)) auto 0; }
-.pj-feature-one h3 { text-align: center; }
+/* A subheading between figures in a section. */
+.pj-subhead { margin-top: calc(2.5 * var(--gap)); }
+.pj-subhead + .pj-bleed { margin-top: .4em; }
 
-/* Cognitive maps: a loose grid, each drawing with its reader's name and note. */
+/* Four small maps in a row. */
+.pj-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--gap); }
+
+/* A photo beside a chart, both ending on the same line. */
+.pj-photo-chart { display: grid; grid-template-columns: 1fr 1.22fr; gap: calc(1.5 * var(--gap)); align-items: end; margin: .6em 0 calc(1.5 * var(--gap)); }
+.pj-photo-chart figcaption { position: absolute; }
+.pj-photo-chart figure { position: relative; }
+
+/* The photo of someone drawing, below the text and above the drawings. */
+.pj-drawing-photo { max-width: 60%; }
+
+/* Cognitive maps: every drawing cleaned and fitted to the same square, three
+   then two, each with its maker's name and a note. */
 .pj-cogmaps { display: grid; grid-template-columns: repeat(6, 1fr); gap: calc(1.5 * var(--gap)) var(--gap); margin-top: calc(2 * var(--gap)); align-items: start; }
 .pj-cogmaps figure { grid-column: span 2; }
-.pj-cogmaps figure:nth-child(4), .pj-cogmaps figure:nth-child(5) { grid-column: span 3; width: 62%; justify-self: center; }
+.pj-cogmaps figure:nth-child(4) { grid-column: 2 / span 2; }
+.pj-cogmaps figure:nth-child(5) { grid-column: 4 / span 2; }
 .pj-cogmaps figcaption b { display: block; margin-bottom: .2em; color: #1a1a1a; font-weight: 600; }
+
+/* The report's contents, with what this page covers in dark text. */
+.pj-toc-key { display: flex; gap: 1.6em; font-size: .8em; color: #6f6f6f; }
+.pj-toc-key span::before { content: ""; display: inline-block; width: .8em; height: .8em; margin-right: .5em; border-radius: 50%; vertical-align: -.05em; }
+.pj-toc-key .on::before { background: #1a1a1a; }
+.pj-toc-key .off::before { border: 1px solid #b0b0b0; }
+.pj-toc { display: grid; grid-template-columns: repeat(7, 1fr); gap: var(--gap) calc(.6 * var(--gap)); margin-top: 1.4em; padding: 0; list-style: none; font-size: .8em; line-height: 1.35; }
+.pj-toc > li { padding-top: .8em; border-top: 2px solid #1a1a1a; }
+.pj-toc h3 { min-height: 3.9em; margin-bottom: .6em; }
+.pj-toc h3 span { display: block; margin-bottom: .2em; color: #6f6f6f; font-weight: 400; }
+.pj-toc ul li { position: relative; padding-left: 1.1em; }
+.pj-toc ul li + li { margin-top: .5em; }
+.pj-toc ul li::before { content: ""; position: absolute; left: 0; top: .4em; width: .55em; height: .55em; border-radius: 50%; background: #1a1a1a; }
+.pj-toc ul li.off { color: #8a8a8a; }
+.pj-toc ul li.off::before { background: none; border: 1px solid #b0b0b0; }
 
 /* SWOT: four short columns, each marked with its color from the report. */
 .pj-swot { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--gap); }
@@ -279,9 +308,15 @@ html { overflow-x: clip; }
   .pj-feature figure { width: 100%; }
   .pj-keyed h3 { position: static; transform: none; margin-bottom: .6em; }
   .pj-before-after, .pj-site, .pj-intro-wide { grid-template-columns: 1fr; }
-  .pj-feature-one { width: 100%; }
-  .pj-cogmaps { grid-template-columns: 1fr; gap: 40px; }
-  .pj-cogmaps figure, .pj-cogmaps figure:nth-child(4), .pj-cogmaps figure:nth-child(5) { grid-column: auto; width: 100%; }
+  .pj-stats { grid-template-columns: 1fr 1fr; }
+  .pj-grid-4 { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .pj-photo-chart { grid-template-columns: 1fr; }
+  .pj-photo-chart figcaption { position: static; }
+  .pj-drawing-photo { max-width: 100%; }
+  .pj-cogmaps { grid-template-columns: 1fr 1fr; gap: 32px 16px; }
+  .pj-cogmaps figure, .pj-cogmaps figure:nth-child(4), .pj-cogmaps figure:nth-child(5) { grid-column: auto; }
+  .pj-toc { grid-template-columns: 1fr 1fr; }
+  .pj-toc h3 { min-height: 0; }
   .pj-swot { grid-template-columns: 1fr 1fr; gap: 32px 20px; }
   .pj-before-after img:first-child { max-width: 60%; }
   .project-body .pj-bleed { margin-left: calc(-1 * var(--pad)); }
