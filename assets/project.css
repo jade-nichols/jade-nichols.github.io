@@ -217,6 +217,10 @@ figcaption, .pj-credit {
   font-size: .75em; line-height: 1.2; text-align: center;
 }
 
+/* Full bleed: the image spans the whole window, edge to edge. */
+html { overflow-x: clip; }
+.project-body .pj-bleed { width: 100vw; max-width: none; margin-left: calc(-1 * var(--left)); }
+
 .pj-end { margin-top: max(calc(120 * var(--u)), 64px); }
 .pj-end .deliverable { margin: 0; }
 
@@ -227,6 +231,7 @@ figcaption, .pj-credit {
   .pj-clipping { max-width: 300px; }
   .pj-split-reverse figure { order: 2; }
   .pj-feature figure { width: 100%; }
+  .project-body .pj-bleed { margin-left: calc(-1 * var(--pad)); }
   .pj-grid-3 { grid-template-columns: 1fr; gap: 48px; }
   .pj-maps { grid-template-columns: repeat(3, 1fr); gap: 12px; }
   .pj-maps .pj-legend { font-size: 11px; }
