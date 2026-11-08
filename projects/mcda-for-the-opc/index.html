@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Multi-Criteria Decision Analysis for the Obama Presidential Center | Jade Nichols</title>
+  <meta name="description" content="A GIS multi-criteria decision analysis mapping housing vulnerability around the Obama Presidential Center in Hyde Park, Woodlawn and South Shore, Chicago. Final research project by Jade Nichols, Fall 2024.">
+  <link rel="preload" href="../../assets/fonts/albert-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../assets/site.css">
+  <link rel="stylesheet" href="../../assets/project.css">
+  <script src="../../assets/project.js" defer></script>
+</head>
+<body>
+  <a class="back" href="../../">
+    <svg viewBox="0 0 29 10" aria-hidden="true"><path d="M8 5H29" fill="none"/><path d="M0 5 9 1.5V8.500Z" stroke="none"/></svg>Back
+  </a>
+
+  <main class="project">
+    <header class="cover">
+      <img class="cover-image" src="../../assets/mcda/cover.jpg" width="1784" height="1004" alt="Rendering of the Obama Presidential Center's stone tower rising above the trees of Jackson Park, with the Chicago skyline in the distance.">
+
+      <div class="cover-info">
+        <div>
+          <h1 class="project-title" id="title">Multi-Criteria Decision Analysis for the Obama Presidential Center</h1>
+          <ul class="project-meta">
+            <li>Final Research Project (Intro to GIS)</li>
+            <li>Chicago, IL</li>
+            <li>Fall 2024</li>
+          </ul>
+          <a class="deliverable" href="../../assets/mcda/mcda-paper.pdf" target="_blank" rel="noopener">Access Full Paper -&gt;</a>
+        </div>
+
+        <a class="more" href="#title">
+          More
+          <svg viewBox="0 0 10 28" aria-hidden="true"><path d="M5 0V20" fill="none"/><path d="M5 28 1.500 19H8.500Z" stroke="none"/></svg>
+        </a>
+      </div>
+    </header>
+
+    <div class="project-body">
+
+      <section class="pj-section">
+        <div class="pj-text pj-contribution">
+          <p>Hyde Park, Woodlawn, and South Shore form a district facing transformation. The arrival of the Obama Presidential Center in Jackson Park brings investment and opportunity for Chicago’s South Side, but also displacement risk for renters. In addition to community concerns, gross median rents near the OPC increased 28% from 2016 to 2022, outpacing citywide growth. This GIS analysis maps housing vulnerability across the three neighborhoods to identify which block groups most urgently need anti-displacement policies.</p>
+          <p>Using Census data and multi-criteria decision analysis, a composite vulnerability index was developed. This index incorporated proximity to the OPC the change in vacancy rates, turnover rates, amount of burdened and severely burdened renters, and distance to the OPC. Six census block groups scored above 3.5 on the 5-point scale, indicating high displacement risk. These clusters concentrate in northern Woodlawn and eastern Hyde Park.</p>
+          <p>From the analysis, three Housing Preservation Districts (HPDs) with tiered protection frameworks have been proposed to preserve affordability. Base-tier protections include displacement monitoring and legal counseling, while enhanced-tier zones trigger Community Land Trust acquisition priority, rent stabilization, and tenant right of first refusal on sales. This methodology offers a replicable framework for district-scale housing vulnerability assessments.</p>
+        </div>
+      </section>
+
+      <section class="pj-section">
+        <h2>Framing OPC Displacement</h2>
+        <img src="../../assets/mcda/context-map.jpg" width="2400" height="1600" loading="lazy" alt="Dot map of Hyde Park, Woodlawn and South Shore, each dot ten residents by race, with half-mile, one-mile and two-mile rings around the Obama Presidential Center site in Jackson Park. Hyde Park is mixed; Woodlawn and South Shore are mostly Black.">
+        <img class="pj-bleed pj-gap-top" src="../../assets/mcda/timeline.jpg" width="2400" height="1600" loading="lazy" alt="Timeline collage. 2016: OPC site announced in Jackson Park. 2018: federal review delays the project; displacement concerns emerge. 2020: property values surge 48%; organizing intensifies, with protest signs reading Stop Displacement of Black Families. 2021: groundbreaking in September. 2026: scheduled completion in June.">
+      </section>
+
+      <section class="pj-section">
+        <h2>Gross Median Rent</h2>
+        <div class="pj-rent-heads"><h3>Gross Median Rent in 2016</h3><h3>Gross Median Rent in 2022</h3></div>
+        <img src="../../assets/mcda/rent-maps.jpg" width="2400" height="875" loading="lazy" alt="Two maps of gross median rent by block group. In 2016: Hyde Park $1,103, Woodlawn $883, South Shore $875. In 2022: Hyde Park $1,435 (+30.1%), Woodlawn $1,115 (+26.3%), South Shore $1,095 (+25.1%).">
+        <div class="pj-split pj-gap-top pj-rent">
+          <div class="pj-text">
+            <p>Median rent around the OPC increased by $248 from 2016 to 2022. This is 22% more than the City of Chicago, which had median rent increase by $216 over the same period. The Obama Center could accelerate this pattern.</p>
+          </div>
+          <dl class="pj-rent-table">
+            <div><dt>Avg rent in study area</dt><dd>$893 → $1,141 <span class="up">(+27.8%)</span></dd></div>
+            <div><dt>Avg rent in City of Chicago</dt><dd>$970 → $1,186 <span>(+22.6%)</span></dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="pj-section">
+        <h2>Resident Quotes</h2>
+        <div class="pj-quotes">
+          <figure class="pj-quote">
+            <img src="../../assets/mcda/resident-0004.png" width="396" height="594" loading="lazy" alt="">
+            <div><blockquote>“The owner told me he’d be charging 1,500, and that once the Obama Center was completed there’d be people who could afford the rent.”</blockquote><figcaption>Patricia Hightower, Woodlawn</figcaption></div>
+          </figure>
+          <figure class="pj-quote">
+            <img src="../../assets/mcda/resident-0019.png" width="313" height="540" loading="lazy" alt="">
+            <div><blockquote>“I’m a working mother who can’t afford to live in my own community that I’ve lived in for 42 years. It’s the same story with so many people in this community.”</blockquote><figcaption>Tahiti Hamer, South Shore</figcaption></div>
+          </figure>
+          <figure class="pj-quote">
+            <img src="../../assets/mcda/resident-0060.png" width="750" height="1506" loading="lazy" alt="">
+            <div><blockquote>“We’re fighting to cancel rent, fighting to stop evictions and stop rent increases, and we want to fundamentally stop gentrification.”</blockquote><figcaption>Faye Porter, Hyde Park</figcaption></div>
+          </figure>
+          <figure class="pj-quote">
+            <img src="../../assets/mcda/resident-0040.png" width="231" height="649" loading="lazy" alt="">
+            <div><blockquote>“When you got people’s rent going from $850 to $1,300, you’re telling people you don’t want them in your neighborhood.”</blockquote><figcaption>Dixon Romeo, South Shore</figcaption></div>
+          </figure>
+        </div>
+      </section>
+
+      <section class="pj-section">
+        <h2>Methodology</h2>
+        <img src="../../assets/mcda/method.jpg" width="2400" height="1600" loading="lazy" alt="Methodology flow chart. Cook County ACS housing data (5-year estimates, 2016 and 2022, n=94) is clipped to Hyde Park, Woodlawn and South Shore. Five factors are each rated per block group, the change calculated, and reclassified into five levels of threat severity: turnover (20% weight), vacancy (15%), distance to the OPC (10%), burdened renters paying 30–49% of income (25%), and severely burdened renters paying 50% or more (30%). The weighted scores are mapped from 1 to 5, and one Housing Preservation District is proposed per neighborhood for block groups scoring above 3.49.">
+      </section>
+
+      <section class="pj-section">
+        <h2>Change by Block Group</h2>
+
+        <div class="pj-change">
+          <img src="../../assets/mcda/change-turnover.jpg" width="1200" height="885" loading="lazy" alt="Map of change in turnover rate by block group, 2016 to 2022: Hyde Park +4.3%, Woodlawn −0.7%, South Shore −3.5%.">
+          <div>
+            <h3>Change in Turnover Rate by Block Group</h3>
+            <p class="pj-years">2016–2022</p>
+            <ul class="pj-bgs">
+              <li><b class="up">37% increase</b><img src="../../assets/mcda/bg-turnover-1.png" width="300" height="265" loading="lazy" alt=""><span>Block Group 1 / 4109<br>0.93mi from OPC</span></li>
+              <li><b class="up">30% increase</b><img src="../../assets/mcda/bg-turnover-2.png" width="300" height="274" loading="lazy" alt=""><span>Block Group 1 / 4110<br>0.68mi from OPC</span></li>
+              <li><b class="up">21% increase</b><img src="../../assets/mcda/bg-turnover-3.png" width="300" height="274" loading="lazy" alt=""><span>Block Group 2 / 4111<br>0.22mi from OPC</span></li>
+              <li><b class="up">28% increase</b><img src="../../assets/mcda/bg-turnover-4.png" width="300" height="270" loading="lazy" alt=""><span>Block Group 2 / 8344<br>0.61mi from OPC</span></li>
+            </ul>
+            <h4>Takeaway</h4>
+            <p>Hyde Park saw the highest rate of resident displacement and replacement, but U Chicago grad housing could be contributing to this higher turnover rate.</p>
+          </div>
+        </div>
+
+        <div class="pj-change">
+          <img src="../../assets/mcda/change-vacancy.jpg" width="1200" height="806" loading="lazy" alt="Map of change in vacancy rate by block group, 2016 to 2022: Hyde Park −5.2%, Woodlawn −4.5%, South Shore −7.1%.">
+          <div>
+            <h3>Change in Vacancy Rate by Block Group</h3>
+            <p class="pj-years">2016–2022</p>
+            <ul class="pj-bgs">
+              <li><b class="up">18% decrease</b><img src="../../assets/mcda/bg-vacancy-1.png" width="300" height="232" loading="lazy" alt=""><span>Block Group 1 / 8439<br>0.40mi from OPC</span></li>
+              <li><b class="up">34% decrease</b><img src="../../assets/mcda/bg-vacancy-2.png" width="300" height="240" loading="lazy" alt=""><span>Block Group 2 / 8439<br>0.65mi from OPC</span></li>
+              <li><b class="up">27% decrease</b><img src="../../assets/mcda/bg-vacancy-3.png" width="300" height="240" loading="lazy" alt=""><span>Block Group 1 / 4303<br>0.92mi from OPC</span></li>
+              <li><b class="up">29% decrease</b><img src="../../assets/mcda/bg-vacancy-4.png" width="300" height="236" loading="lazy" alt=""><span>Block Group 3 / 4303<br>1.10mi from OPC</span></li>
+            </ul>
+            <h4>Takeaway</h4>
+            <p>While all neighborhoods experienced a vacancy decrease, Eastern Woodlawn and Northern South Shore saw the greatest surges in housing demand.</p>
+          </div>
+        </div>
+
+        <div class="pj-change">
+          <img src="../../assets/mcda/change-burden.jpg" width="1200" height="822" loading="lazy" alt="Map of change in the rate of rent-burdened renters by block group, 2016 to 2022: Hyde Park +4.8%, Woodlawn +3.7%, South Shore +0.5%.">
+          <div>
+            <h3>Change in Rate of Rent-Burdened Renters*</h3>
+            <p class="pj-years">2016–2022</p>
+            <ul class="pj-bgs">
+              <li><b class="up">22% increase</b><img src="../../assets/mcda/bg-burden-1.png" width="300" height="215" loading="lazy" alt=""><span>Block Group 1 / 4109<br>0.93mi from OPC</span></li>
+              <li><b class="up">25% increase</b><img src="../../assets/mcda/bg-burden-2.png" width="300" height="223" loading="lazy" alt=""><span>Block Group 2 / 8439<br>0.65mi from OPC</span></li>
+              <li><b class="up">35% increase</b><img src="../../assets/mcda/bg-burden-3.png" width="300" height="223" loading="lazy" alt=""><span>Block Group 5 / 4302<br>0.80mi from OPC</span></li>
+              <li><b class="up">48% increase</b><img src="../../assets/mcda/bg-burden-4.png" width="300" height="219" loading="lazy" alt=""><span>Block Group 3 / 4301<br>1mi from OPC</span></li>
+            </ul>
+            <h4>Takeaway</h4>
+            <p>Despite South Shore’s lower increase in rent-burdened renters, the variance in rate changes per block group points to housing instability.</p>
+            <p class="pj-credit">*30-49% of income spent on rent</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="pj-section">
+        <h2>New Housing Preservation Districts</h2>
+        <img src="../../assets/mcda/hpd-map.jpg" width="2250" height="1496" loading="lazy" alt="Map of displacement risk by block group: low (vulnerability score under 3.00), medium (3.00–3.49) and high (over 3.50), with three proposed Housing Preservation Districts circled: HPD 1 in eastern Hyde Park, HPD 2 in northern Woodlawn, and HPD 3 in northern South Shore.">
+
+        <h3 class="pj-subhead">Displacement Protection Framework</h3>
+        <div class="pj-tiers">
+          <div>
+            <h4>Base Tier (Vulnerability 3.0 - 3.49)</h4>
+            <ul>
+              <li>Annual displacement monitoring</li>
+              <li>Free legal counseling in evictions</li>
+              <li>Notice of tenant rights at lease signing</li>
+              <li>Annual vulnerability index updating</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Enhanced Tier (Vulnerability 3.5+)</h4>
+            <ul>
+              <li>All base protections, PLUS:</li>
+              <li>Community Land Trust acquisition priority</li>
+              <li>Rent stabilization for existing tenants</li>
+              <li>Tenant right of first refusal on sales</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pj-hpds">
+          <div class="pj-hpd">
+            <h4>HPD 1: Hyde Park</h4>
+            <ul><li>3 block groups</li><li>4,126 residents</li><li>1,356 rental units</li><li>22% Black, 61% White</li></ul>
+            <p>Mean vulnerability score <b class="high">3.6</b></p>
+          </div>
+          <div class="pj-hpd">
+            <h4>HPD 2: Woodlawn</h4>
+            <ul><li>6 block groups</li><li>7,640 residents</li><li>2,428 rental units</li><li>64% Black, 21% White</li></ul>
+            <p>Mean vulnerability score <b class="high">3.7</b></p>
+          </div>
+          <div class="pj-hpd">
+            <h4>HPD 3: South Shore</h4>
+            <ul><li>6 block groups</li><li>4,943 residents</li><li>1,907 rental units</li><li>91% Black, 6% White</li></ul>
+            <p>Mean vulnerability score <b class="medium">3.3</b></p>
+          </div>
+        </div>
+      </section>
+
+      <p class="pj-end"><a class="deliverable" href="../../assets/mcda/mcda-paper.pdf" target="_blank" rel="noopener">Access Full Paper -&gt;</a></p>
+    </div>
+  </main>
+</body>
+</html>

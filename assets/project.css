@@ -303,6 +303,49 @@ html { overflow-x: clip; }
 .swot-s { --c: #5b88c4; } .swot-w { --c: #d9915a; } .swot-o { --c: #64a3a3; } .swot-t { --c: #ab333f; }
 
 .pj-end { margin-top: max(calc(120 * var(--u)), 64px); }
+/* MCDA: headings over the two rent maps, each above its own half. */
+.pj-rent-heads { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); }
+.pj-rent-table { margin: 0; }
+.pj-rent-table > div + div { margin-top: 1em; }
+.pj-rent-table dt { font-size: .8em; color: #6f6f6f; }
+.pj-rent-table dd { margin: .2em 0 0; font-size: 1.25em; font-weight: 600; }
+.pj-rent-table dd span { font-size: .75em; font-weight: 400; }
+.up { color: #c8312f; }
+
+/* Resident quotes, two by two, each beside its figure. */
+.pj-quotes { display: grid; grid-template-columns: 1fr 1fr; gap: calc(1.5 * var(--gap)) calc(2 * var(--gap)); }
+.pj-quote { display: grid; grid-template-columns: 22% 1fr; gap: var(--gap); align-items: center; }
+.pj-quote img { width: auto; max-width: 100%; max-height: 13em; margin: 0 auto; }
+.pj-quote blockquote { margin: 0; font-size: 1.05em; line-height: 1.45; }
+.pj-quote figcaption { margin-top: .8em; font-style: italic; }
+.pj-quote figcaption::before { content: "— "; }
+
+/* A change map beside its title, the four most-changed block groups and a takeaway. */
+.pj-change { display: grid; grid-template-columns: 52% 1fr; gap: calc(1.5 * var(--gap)); align-items: center; }
+.pj-change + .pj-change { margin-top: calc(2.5 * var(--gap)); }
+.pj-change h3 { margin-bottom: .1em; }
+.pj-years { font-size: .8em; color: #6f6f6f; }
+.pj-change h4 { margin-top: 1.4em; font-size: .9em; font-weight: 600; }
+.pj-change h4 + p { margin-top: .3em; }
+.pj-bgs { display: grid; grid-template-columns: repeat(4, 1fr); gap: .8em; margin-top: 1.2em; font-size: .7em; line-height: 1.35; }
+.pj-bgs b { display: block; font-weight: 600; }
+.pj-bgs img { height: 4.5em; width: 100%; object-fit: contain; margin: .6em 0; }
+.pj-bgs span { color: #6f6f6f; }
+
+/* Protection tiers and the three districts. */
+.pj-tiers { display: grid; grid-template-columns: 1fr 1fr; gap: calc(2 * var(--gap)); margin-top: 1em; }
+.pj-tiers h4 { font-weight: 600; margin-bottom: .6em; }
+.pj-tiers ul, .pj-hpd ul { padding-left: 1.1em; list-style: disc; }
+.pj-tiers li + li { margin-top: .35em; }
+.pj-hpds { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap); margin-top: calc(2 * var(--gap)); }
+.pj-hpd { border: 2px solid #1f2a44; }
+.pj-hpd h4 { margin: 0; padding: .6em 1em; background: #1f2a44; color: #fff; font-weight: 600; }
+.pj-hpd ul { margin: 1em 1em 1em 2.1em; font-size: .9em; }
+.pj-hpd p { display: flex; justify-content: space-between; align-items: center; margin: 0; padding: .8em 1em; border-top: 2px solid #1f2a44; font-size: .85em; }
+.pj-hpd b { font-size: 2.2em; line-height: 1; font-weight: 700; }
+.pj-hpd .high { color: #e2402c; }
+.pj-hpd .medium { color: #f2a51a; }
+
 .pj-end .deliverable { margin: 0; }
 
 /* Text beside an image only works while the column is wide enough. In
@@ -310,6 +353,9 @@ html { overflow-x: clip; }
    the images keep getting smaller, so a paragraph can run far past its image.
    Below this width the text sits above its image instead. */
 @container (max-width: 899px) {
+  .pj-change, .pj-quotes { grid-template-columns: 1fr; }
+  .pj-change > img { max-width: 80%; }
+  .pj-tiers, .pj-hpds { grid-template-columns: 1fr; }
   .pj-split, .pj-split-reverse, .pj-site, .pj-intro, .pj-intro-wide { grid-template-columns: 1fr; }
   .pj-split .pj-text, .pj-split-reverse .pj-text, .pj-site-text, .pj-intro .pj-text { max-width: 44em; }
   .pj-split-reverse > figure { order: 2; }
