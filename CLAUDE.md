@@ -37,7 +37,7 @@ Visual reference: `_source/sketching_land_mockup.jpg`, `_source/sketch_pg1_mocku
 - **Sketching with the down arrow:** glides down to the first page of sketches, a little slower than the browser's own smooth scroll. Normal scrolling also works.
 - **Back:** returns to home with the project list closed, reversing the animation when possible.
 - **Pages of sketches:** each is three panels cut from a mockup (`sketch_pg1_mockup.jpg`, `sketch_pg2_mockup.jpg`), in a row, stacked on phones. New pages follow the same pattern.
-- **Rows of single sketches** follow pages 1 and 2, three per row, alternating three vertical and three horizontal. They come from `_source/Sketching/sketches png/`, cleaned to black and white with similar line weights (`assets/sketching-3a.png` onward). Most are pencil: keep their grey tones and detail, only whitening the paper, smudges and scan edges. Pen drawings can go pure black and white. Don't make them too dark.
+- **Rows of single sketches** follow pages 1 and 2, three per row, alternating three vertical and three horizontal, then a final row of two horizontal pen sketches (`sk-pair`, same overall width). They come from `_source/Sketching/sketches png/`, cleaned to black and white with similar line weights (`assets/sketching-3a.png` onward). Most are pencil: keep their grey tones and detail, only whitening the paper, smudges and scan edges. Pen drawings can go pure black and white. Don't make them too dark.
 
 ### Project pages (`/projects/<project-name>/`)
 - **Back (top left):** goes to home and stays in the same position while scrolling. On hover, the arrow and the word are both underlined.

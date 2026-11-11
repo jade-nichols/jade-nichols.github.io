@@ -433,3 +433,8 @@ body {
    is clicked keeps them from flashing over the home page while the reverse
    animation plays. */
 html:not(.sketching) .sk-pages { display: none; }
+
+/* A row of two horizontal sketches, spanning the same width as a row of three. */
+@media (min-width: 760px) {
+  .sk-page.sk-pair { grid-template-columns: repeat(2, calc((3 * 25vw + 3.75vw) / 2)); }
+}
