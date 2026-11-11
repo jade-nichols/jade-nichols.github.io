@@ -1,6 +1,6 @@
 # Jade Nichols Portfolio
 
-Personal portfolio site, published with GitHub Pages at https://jade-nichols.github.io from a public repository.
+Personal portfolio site at https://jadenichols.me, published with GitHub Pages from a public repository (jade-nichols.github.io now redirects there). The domain is registered at Namecheap through the GitHub Student Pack, free until November 11, 2027 (auto-renew off). DNS: four A records for @ to 185.199.108-111.153 and a CNAME for www to jade-nichols.github.io; the `CNAME` file in the repo holds the domain.
 
 ## Who
 Jade Nichols: landscape architecture master's student at CCNY Spitzer, urban planning degree from Cornell. Combines community engagement, spatial data analysis, and design. Full bio: `_source/Bio.txt`.
